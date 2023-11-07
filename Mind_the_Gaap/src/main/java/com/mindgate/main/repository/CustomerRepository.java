@@ -22,7 +22,7 @@ public class CustomerRepository implements CustomerRepositoryInterface {
 
 	@Override
 	public boolean addNewCustomer(Customer customer) {
-		Object[] parameters = { customer.getFirst_name(),customer.getLast_name(),customer.getUsername(),customer.getPassword(),customer.getAddress_line_1(),customer.getAddress_line_2(),customer.getAddress_line_3(),customer.getCity(),customer.getState(),customer.getZip(),customer.getPhone(),customer.getCell(),customer.getEmail(),customer.getCustomer_status()};
+		Object[] parameters = { customer.getFirstName(),customer.getLastName(),customer.getUsername(),customer.getPassword(),customer.getAddressLine1(),customer.getAddressLine2(),customer.getAddressLine3(),customer.getCity(),customer.getState(),customer.getZip(),customer.getPhone(),customer.getCell(),customer.getEmail(),customer.getCustomerStatus()};
 		int rowCount = jdbcTemplate.update(INSERT_NEW_CUSTOMER, parameters);
 		if (rowCount > 0)
 			return true;
@@ -32,10 +32,10 @@ public class CustomerRepository implements CustomerRepositoryInterface {
 
 	@Override
 	public Customer updateCustomer(Customer customer) {
-		Object[] parameters = { customer.getFirst_name(),customer.getLast_name(),customer.getUsername(),customer.getPassword(),customer.getAddress_line_1(),customer.getAddress_line_2(),customer.getAddress_line_3(),customer.getCity(),customer.getState(),customer.getZip(),customer.getPhone(),customer.getCell(),customer.getEmail(),customer.getCustomer_id(),customer.getCustomer_status() };
+		Object[] parameters = { customer.getFirstName(),customer.getLastName(),customer.getUsername(),customer.getPassword(),customer.getAddressLine1(),customer.getAddressLine2(),customer.getAddressLine3(),customer.getCity(),customer.getState(),customer.getZip(),customer.getPhone(),customer.getCell(),customer.getEmail(),customer.getCustomerId(),customer.getCustomerStatus() };
 		int rowCount = jdbcTemplate.update(UPDATE_EXISTING_CUSTOMER, parameters);
 		if (rowCount > 0) {
-			return getCustomerByCustomerId(customer.getCustomer_id());
+			return getCustomerByCustomerId(customer.getCustomerId());
 		}
 		return null;
 	}
