@@ -14,7 +14,7 @@ import com.mindgate.main.service.CustomerServiceInterface;
 
 @RestController
 @RequestMapping("customerCRUDapi")
-public class CustomerCRUDController {
+public class CustomerController {
 
 	@Autowired
 	private CustomerServiceInterface customerServiceInterface;
@@ -42,6 +42,8 @@ public class CustomerCRUDController {
 
 	@RequestMapping(value = "customers" , method = RequestMethod.GET )
 	public List<Customer> getAllCustomers() {
+		System.out.println("All Customers");
 		return customerServiceInterface.getAllCustomers();
 	}
+	
 }
