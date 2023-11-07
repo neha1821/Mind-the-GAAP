@@ -9,7 +9,7 @@ import com.mindgate.main.domain.Account;
 import com.mindgate.main.repository.AccountRepositoryInterface;
 
 @Service 
-public class AccountService implements AccountRepositoryInterface {
+public class AccountService implements AccountServiceInterface {
 	
 	@Autowired
 	private AccountRepositoryInterface accountRepositoryInterface;
