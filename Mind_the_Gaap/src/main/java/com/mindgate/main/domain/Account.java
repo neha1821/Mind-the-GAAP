@@ -10,7 +10,7 @@ public class Account {
     private String accountStatus;
     private Customer customerId;
     public Account() {
-    	System.out.println("hi hii hii");    
+    	System.out.println("hi hii hihhi");    
     }
     
     public Account(String date, double minimumBalance, double currentBalance, double rateOfInterest, int accountId,
