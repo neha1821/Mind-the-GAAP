@@ -4,17 +4,18 @@ public class Cheque {
 	private int chequeId;
 	private String chequeDate;
 	private double amount;
-	private Account senderAccountId;
-	private Account receiverAccountId;
+	private int senderAccountId;
+	private int receiverAccountId;
 	private String clearanceChequeDate;
 	private String chequeStatus;
+	private Account account;
 	
 	public Cheque() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cheque(int chequeId, String chequeDate, double amount, Account senderAccountId, Account receiverAccountId,
-			String clearanceChequeDate, String chequeStatus) {
+	public Cheque(int chequeId, String chequeDate, double amount, int senderAccountId, int receiverAccountId,
+			String clearanceChequeDate, String chequeStatus, Account account) {
 		super();
 		this.chequeId = chequeId;
 		this.chequeDate = chequeDate;
@@ -23,6 +24,7 @@ public class Cheque {
 		this.receiverAccountId = receiverAccountId;
 		this.clearanceChequeDate = clearanceChequeDate;
 		this.chequeStatus = chequeStatus;
+		this.account = account;
 	}
 
 	public int getChequeId() {
@@ -49,19 +51,19 @@ public class Cheque {
 		this.amount = amount;
 	}
 
-	public Account getSenderAccountId() {
+	public int getSenderAccountId() {
 		return senderAccountId;
 	}
 
-	public void setSenderAccountId(Account senderAccountId) {
+	public void setSenderAccountId(int senderAccountId) {
 		this.senderAccountId = senderAccountId;
 	}
 
-	public Account getReceiverAccountId() {
+	public int getReceiverAccountId() {
 		return receiverAccountId;
 	}
 
-	public void setReceiverAccountId(Account receiverAccountId) {
+	public void setReceiverAccountId(int receiverAccountId) {
 		this.receiverAccountId = receiverAccountId;
 	}
 
@@ -81,13 +83,20 @@ public class Cheque {
 		this.chequeStatus = chequeStatus;
 	}
 
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
 	@Override
 	public String toString() {
 		return "Cheque [chequeId=" + chequeId + ", chequeDate=" + chequeDate + ", amount=" + amount
 				+ ", senderAccountId=" + senderAccountId + ", receiverAccountId=" + receiverAccountId
-				+ ", clearanceChequeDate=" + clearanceChequeDate + ", chequeStatus=" + chequeStatus + "]";
+				+ ", clearanceChequeDate=" + clearanceChequeDate + ", chequeStatus=" + chequeStatus + ", account="
+				+ account + "]";
 	}
-	
-	
-	
-}	
+
+	}	
