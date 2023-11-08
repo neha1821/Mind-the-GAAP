@@ -2,61 +2,61 @@ package com.mindgate.main.domain;
 
 public class Customer {
 
-	private String first_name;
-	private String last_name;
+	private String firstName;
+	private String lastName;
 	private String username;
 	private String password;
-	private String address_line_1;
-	private String address_line_2;
-	private String address_line_3;
+	private String addressLine1;
+	private String addressLine2;
+	private String addressLine3;
 	private String city;
 	private String state;
 	private int zip;
 	private long phone;
 	private long cell;
 	private String email;
-	private int customer_id;
-	private String customer_status;
+	private int customerId;
+	private String customerStatus;
 
 	public Customer() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(String first_name, String last_name, String username, String password,
-			String address_line_1, String address_line_2, String address_line_3, String city, String state, int zip,
-			long phone, long cell, String email, int customer_id, String customer_status) {
+	public Customer(String firstName, String lastName, String username, String password, String addressLine1,
+			String addressLine2, String addressLine3, String city, String state, int zip, long phone, long cell,
+			String email, int customerId, String customerStatus) {
 		super();
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
-		this.address_line_1 = address_line_1;
-		this.address_line_2 = address_line_2;
-		this.address_line_3 = address_line_3;
+		this.addressLine1 = addressLine1;
+		this.addressLine2 = addressLine2;
+		this.addressLine3 = addressLine3;
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
 		this.phone = phone;
 		this.cell = cell;
 		this.email = email;
-		this.customer_id = customer_id;
-		this.customer_status = customer_status;
+		this.customerId = customerId;
+		this.customerStatus = customerStatus;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getUsername() {
@@ -75,28 +75,28 @@ public class Customer {
 		this.password = password;
 	}
 
-	public String getAddress_line_1() {
-		return address_line_1;
+	public String getAddressLine1() {
+		return addressLine1;
 	}
 
-	public void setAddress_line_1(String address_line_1) {
-		this.address_line_1 = address_line_1;
+	public void setAddressLine1(String addressLine1) {
+		this.addressLine1 = addressLine1;
 	}
 
-	public String getAddress_line_2() {
-		return address_line_2;
+	public String getAddressLine2() {
+		return addressLine2;
 	}
 
-	public void setAddress_line_2(String address_line_2) {
-		this.address_line_2 = address_line_2;
+	public void setAddressLine2(String addressLine2) {
+		this.addressLine2 = addressLine2;
 	}
 
-	public String getAddress_line_3() {
-		return address_line_3;
+	public String getAddressLine3() {
+		return addressLine3;
 	}
 
-	public void setAddress_line_3(String address_line_3) {
-		this.address_line_3 = address_line_3;
+	public void setAddressLine3(String addressLine3) {
+		this.addressLine3 = addressLine3;
 	}
 
 	public String getCity() {
@@ -147,29 +147,30 @@ public class Customer {
 		this.email = email;
 	}
 
-	public int getCustomer_id() {
-		return customer_id;
+	public int getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
-	public String getCustomer_status() {
-		return customer_status;
+	public String getCustomerStatus() {
+		return customerStatus;
 	}
 
-	public void setCustomer_status(String customer_status) {
-		this.customer_status = customer_status;
+	public void setCustomerStatus(String customerStatus) {
+		this.customerStatus = customerStatus;
 	}
 
 	@Override
 	public String toString() {
-		return "Customer_Details [first_name=" + first_name + ", last_name=" + last_name + ", username=" + username
-				+ ", password=" + password + ", address_line_1=" + address_line_1 + ", address_line_2=" + address_line_2
-				+ ", address_line_3=" + address_line_3 + ", city=" + city + ", state=" + state + ", zip=" + zip
-				+ ", phone=" + phone + ", cell=" + cell + ", email=" + email + ", customer_id=" + customer_id
-				+ ", customer_status=" + customer_status + "]";
+		return "Customer [firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password="
+				+ password + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + ", addressLine3="
+				+ addressLine3 + ", city=" + city + ", state=" + state + ", zip=" + zip + ", phone=" + phone + ", cell="
+				+ cell + ", email=" + email + ", customerId=" + customerId + ", customerStatus=" + customerStatus + "]";
 	}
+	
+	
 	
 }
