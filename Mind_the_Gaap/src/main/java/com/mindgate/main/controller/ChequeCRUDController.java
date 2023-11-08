@@ -42,7 +42,7 @@ public class ChequeCRUDController {
 
 	// http://localhost:8081/chequeCRUDapi/getone
 	@RequestMapping(value = "getone/{cheque_id}" , method = RequestMethod.GET )
-	public Cheque getChequeByChequeId(int cheque_id) {
+	public Cheque getChequeByChequeId(@PathVariable int cheque_id) {
 		return chequeServiceInterface.getChequeByChequeId(cheque_id);
 	}
 
