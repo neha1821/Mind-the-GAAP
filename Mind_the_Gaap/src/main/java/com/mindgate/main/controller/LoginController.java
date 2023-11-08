@@ -13,19 +13,19 @@ import com.mindgate.main.domain.LoginDetails;
 import com.mindgate.main.service.LoginServiceInterface;
 
 @RestController
-@RequestMapping("loginapi")
+@RequestMapping("loginCRUDapi")
 public class LoginController {
 
 	@Autowired
 	private LoginServiceInterface loginServiceInterface;
 	
-	// http://localhost:8082/loginapi/logins
+	// http://localhost:8082/loginCRUDapi/logins
 		@RequestMapping(value = "logins" , method = RequestMethod.POST )
 		public boolean addNewLogin(@RequestBody LoginDetails loginDetails) {
 			return loginServiceInterface.addNewLogin(loginDetails);
 		}
 
-		@RequestMapping(value = "logins" , method = RequestMethod.PUT)
+		@RequestMapping(value = "login" , method = RequestMethod.PUT)
 		public LoginDetails updateLogin(@RequestBody LoginDetails loginDetails) {
 			return loginServiceInterface.updateLogin(loginDetails);
 		}
