@@ -10,5 +10,4 @@ public class MindTheGaapApplication {
 		SpringApplication.run(MindTheGaapApplication.class, args);
 		System.out.println("Main Application");
 	}
-
 }

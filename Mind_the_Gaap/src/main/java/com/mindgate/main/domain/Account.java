@@ -2,104 +2,106 @@ package com.mindgate.main.domain;
 
 public class Account {
 	
-	private String date;
-	private double minimumBalance;
-	private double currentBalance;
-	private double rateOfInterest;
-	private int accountId;
-	private String accountType;
-	private String accountStatus;
-	private Customer customerId;
 	
 	
-	public Account() {
-		System.out.println("welcome");
-		System.out.println("hiiiiii");
-}
 	
 
-	public Account(String date, double minimumBalance, double currentBalance, double rateOfInterest, int accountId,
-			String accountType, String accountStatus, Customer customerId) {
-		this.date = date;
-		this.minimumBalance = minimumBalance;
-		this.currentBalance = currentBalance;
-		this.rateOfInterest = rateOfInterest;
-		this.accountId = accountId;
-		this.accountType = accountType;
-		this.accountStatus = accountStatus;
-		this.customerId = customerId;
-	}
+    private String date;
+    private double minimumBalance;
+    private double currentBalance;
+    private double rateOfInterest;
+    private int accountId;
+    private String accountType;
+    private String accountStatus;
+    private Customer customerId;
+    public Account() {
+    	System.out.println("hi hii hihhi");    
+    }
+    
+    public Account(String date, double minimumBalance, double currentBalance, double rateOfInterest, int accountId,
+            String accountType, String accountStatus, Customer customerId) {
+        this.date = date;
+        this.minimumBalance = minimumBalance;
+        this.currentBalance = currentBalance;
+        this.rateOfInterest = rateOfInterest;
+        this.accountId = accountId;
+        this.accountType = accountType;
+        this.accountStatus = accountStatus;
+        this.customerId = customerId;
+    }
 
-	public String getDate() {
-		return date;
-	}
 
-	public void setDate(String date) {
-		this.date = date;
-	}
 
-	public double getMinimumBalance() {
-		return minimumBalance;
-	}
+    public String getDate() {
+        return date;
+    }
 
-	public void setMinimumBalance(double minimumBalance) {
-		this.minimumBalance = minimumBalance;
-	}
+    public void setDate(String date) {
+        this.date = date;
+    }
 
-	public double getCurrentBalance() {
-		return currentBalance;
-	}
+    public double getMinimumBalance() {
+        return minimumBalance;
+    }
 
-	public void setCurrentBalance(double currentBalance) {
-		this.currentBalance = currentBalance;
-	}
+    public void setMinimumBalance(double minimumBalance) {
+        this.minimumBalance = minimumBalance;
+    }
 
-	public double getRateOfInterest() {
-		return rateOfInterest;
-	}
+    public double getCurrentBalance() {
+        return currentBalance;
+    }
 
-	public void setRateOfInterest(double rateOfInterest) {
-		this.rateOfInterest = rateOfInterest;
-	}
+    public void setCurrentBalance(double currentBalance) {
+        this.currentBalance = currentBalance;
+    }
 
-	public int getAccountId() {
-		return accountId;
-	}
+    public double getRateOfInterest() {
+        return rateOfInterest;
+    }
 
-	public void setAccountId(int accountId) {
-		this.accountId = accountId;
-	}
+    public void setRateOfInterest(double rateOfInterest) {
+        this.rateOfInterest = rateOfInterest;
+    }
 
-	public String getAccountType() {
-		return accountType;
-	}
+    public int getAccountId() {
+        return accountId;
+    }
 
-	public void setAccountType(String accountType) {
-		this.accountType = accountType;
-	}
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
+    }
 
-	public String getAccountStatus() {
-		return accountStatus;
-	}
+    public String getAccountType() {
+        return accountType;
+    }
 
-	public void setAccountStatus(String accountStatus) {
-		this.accountStatus = accountStatus;
-	}
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
 
-	public Customer getCustomerId() {
-		return customerId;
-	}
+    public String getAccountStatus() {
+        return accountStatus;
+    }
 
-	public void setCustomerId(Customer customerId) {
-		this.customerId = customerId;
-	}
+    public void setAccountStatus(String accountStatus) {
+        this.accountStatus = accountStatus;
+    }
 
-	@Override
-	public String toString() {
-		return "Account [date=" + date + ", minimumBalance=" + minimumBalance + ", currentBalance=" + currentBalance
-				+ ", rateOfInterest=" + rateOfInterest + ", accountId=" + accountId + ", accountType=" + accountType
-				+ ", accountStatus=" + accountStatus + ", customerId=" + customerId + "]";
-	} 
-	
+    public Customer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Customer customerId) {
+        this.customerId = customerId;
+    }
+
+    @Override
+    public String toString() {
+        return "Account [date=" + date + ", minimumBalance=" + minimumBalance + ", currentBalance=" + currentBalance
+                + ", rateOfInterest=" + rateOfInterest + ", accountId=" + accountId + ", accountType=" + accountType
+                + ", accountStatus=" + accountStatus + ", customerId=" + customerId + "]";
+    } 
+    
 
 }
