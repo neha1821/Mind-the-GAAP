@@ -1,30 +1,55 @@
 package com.mindgate.main.domain;
 
+import java.util.Objects;
+
 public class Cheque {
 	private int chequeId;
 	private String chequeDate;
 	private double amount;
-	private Account accountId;
+	private int accountId;
+	private Account account;
 	private Account receiverAccountId;
 	private String clearanceChequeDate;
 	private String chequeStatus;
-	
-	
+
 	public Cheque() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cheque(int chequeId, String chequeDate, double amount, Account accountId, Account receiverAccountId,
-			String clearanceChequeDate, String chequeStatus, Account account) {
+	public Cheque(int chequeId, String chequeDate, double amount, int accountId, Account account,
+			Account receiverAccountId, String clearanceChequeDate, String chequeStatus) {
 		super();
 		this.chequeId = chequeId;
 		this.chequeDate = chequeDate;
 		this.amount = amount;
 		this.accountId = accountId;
+		this.account = account;
 		this.receiverAccountId = receiverAccountId;
 		this.clearanceChequeDate = clearanceChequeDate;
 		this.chequeStatus = chequeStatus;
-		
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(account, accountId, amount, chequeDate, chequeId, chequeStatus, clearanceChequeDate,
+				receiverAccountId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cheque other = (Cheque) obj;
+		return Objects.equals(account, other.account) && accountId == other.accountId
+				&& Double.doubleToLongBits(amount) == Double.doubleToLongBits(other.amount)
+				&& Objects.equals(chequeDate, other.chequeDate) && chequeId == other.chequeId
+				&& Objects.equals(chequeStatus, other.chequeStatus)
+				&& Objects.equals(clearanceChequeDate, other.clearanceChequeDate)
+				&& Objects.equals(receiverAccountId, other.receiverAccountId);
 	}
 
 	public int getChequeId() {
@@ -51,12 +76,20 @@ public class Cheque {
 		this.amount = amount;
 	}
 
-	public Account getAccountId() {
-		return getAccountId();
+	public int getAccountId() {
+		return accountId;
 	}
 
-	public void setSenderAccountId(Account accountId) {
+	public void setAccountId(int accountId) {
 		this.accountId = accountId;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	public Account getReceiverAccountId() {
@@ -86,12 +119,9 @@ public class Cheque {
 	@Override
 	public String toString() {
 		return "Cheque [chequeId=" + chequeId + ", chequeDate=" + chequeDate + ", amount=" + amount + ", accountId="
-				+ accountId + ", receiverAccountId=" + receiverAccountId + ", clearanceChequeDate="
-				+ clearanceChequeDate + ", chequeStatus=" + chequeStatus + "]";
+				+ accountId + ", account=" + account + ", receiverAccountId=" + receiverAccountId
+				+ ", clearanceChequeDate=" + clearanceChequeDate + ", chequeStatus=" + chequeStatus + "]";
 	}
 
 	
-
-	
-
-	}	
+}
