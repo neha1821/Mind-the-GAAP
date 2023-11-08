@@ -13,7 +13,7 @@ import com.mindgate.main.domain.Customer;
 import com.mindgate.main.service.CustomerServiceInterface;
 
 @RestController
-@RequestMapping("customerCRUDapi")
+@RequestMapping("customerapi")
 public class CustomerController {
 
 	@Autowired

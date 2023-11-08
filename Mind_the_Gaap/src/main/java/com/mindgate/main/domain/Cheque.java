@@ -4,20 +4,27 @@ public class Cheque {
 	private int chequeId;
 	private String chequeDate;
 	private double amount;
-	private int senderAccountId;
-	private int receiverAccountId;
+	private Account accountId;
+	private Account receiverAccountId;
+	private String clearanceChequeDate;
+	private String chequeStatus;
+	
 	
 	public Cheque() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cheque(int chequeId, String chequeDate, double amount, int senderAccountId, int receiverAccountId) {
+	public Cheque(int chequeId, String chequeDate, double amount, Account accountId, Account receiverAccountId,
+			String clearanceChequeDate, String chequeStatus, Account account) {
 		super();
 		this.chequeId = chequeId;
 		this.chequeDate = chequeDate;
 		this.amount = amount;
-		this.senderAccountId = senderAccountId;
+		this.accountId = accountId;
 		this.receiverAccountId = receiverAccountId;
+		this.clearanceChequeDate = clearanceChequeDate;
+		this.chequeStatus = chequeStatus;
+		
 	}
 
 	public int getChequeId() {
@@ -44,25 +51,47 @@ public class Cheque {
 		this.amount = amount;
 	}
 
-	public int getSenderAccountId() {
-		return senderAccountId;
+	public Account getAccountId() {
+		return getAccountId();
 	}
 
-	public void setSenderAccountId(int senderAccountId) {
-		this.senderAccountId = senderAccountId;
+	public void setSenderAccountId(Account accountId) {
+		this.accountId = accountId;
 	}
 
-	public int getReceiverAccountId() {
+	public Account getReceiverAccountId() {
 		return receiverAccountId;
 	}
 
-	public void setReceiverAccountId(int receiverAccountId) {
+	public void setReceiverAccountId(Account receiverAccountId) {
 		this.receiverAccountId = receiverAccountId;
+	}
+
+	public String getClearanceChequeDate() {
+		return clearanceChequeDate;
+	}
+
+	public void setClearanceChequeDate(String clearanceChequeDate) {
+		this.clearanceChequeDate = clearanceChequeDate;
+	}
+
+	public String getChequeStatus() {
+		return chequeStatus;
+	}
+
+	public void setChequeStatus(String chequeStatus) {
+		this.chequeStatus = chequeStatus;
 	}
 
 	@Override
 	public String toString() {
-		return "Cheque [chequeId=" + chequeId + ", chequeDate=" + chequeDate + ", amount=" + amount
-				+ ", senderAccountId=" + senderAccountId + ", receiverAccountId=" + receiverAccountId + "]";
+		return "Cheque [chequeId=" + chequeId + ", chequeDate=" + chequeDate + ", amount=" + amount + ", accountId="
+				+ accountId + ", receiverAccountId=" + receiverAccountId + ", clearanceChequeDate="
+				+ clearanceChequeDate + ", chequeStatus=" + chequeStatus + "]";
+	}
+
+	
+
+	
+
 	}	
-}
