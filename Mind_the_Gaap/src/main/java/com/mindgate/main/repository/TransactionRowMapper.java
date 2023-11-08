@@ -95,7 +95,9 @@ public class TransactionRowMapper implements RowMapper<Transactions> {
 		String transactionStatus = rs.getString("transaction_status");
 
 		Transactions transactions = new Transactions(transactionId, date, transactionType, fromAccount, toAccount, transactionStatus, amount);
+		System.out.println("Transaction");
 		return transactions;
+		
 	}
 
 }

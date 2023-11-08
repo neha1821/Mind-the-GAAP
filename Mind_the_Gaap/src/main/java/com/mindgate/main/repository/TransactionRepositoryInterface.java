@@ -15,5 +15,6 @@ public interface TransactionRepositoryInterface {
 	public Transactions getTransactionByTransactionId(int transactionId);
 
 	public List<Transactions> getAllTransaction();
+	
 
 }
