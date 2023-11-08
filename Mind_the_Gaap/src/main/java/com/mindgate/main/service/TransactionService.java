@@ -17,19 +17,19 @@ public class TransactionService implements TransactionServiceInterface{
 	@Override
 	public boolean addNewTransaction(Transactions transaction) {
 		// TODO Auto-generated method stub
-		return false;
+		return transactionRepositoryInterface.addNewTransaction(transaction);
 	}
 
 	@Override
 	public Transactions updateTransaction(Transactions transaction) {
 		// TODO Auto-generated method stub
-		return null;
+		return transactionRepositoryInterface.updateTransaction(transaction);
 	}
 
 	@Override
 	public boolean deleteTransaction(int transactionId) {
 		// TODO Auto-generated method stub
-		return false;
+		return transactionRepositoryInterface.deleteTransaction(transactionId);
 	}
 
 	@Override

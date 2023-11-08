@@ -5,8 +5,10 @@ public class Transactions {
 	private int transactionId;
 	private String date;
 	private String type;//type to deposit or cheque
-	private Account accountId;
+	private Account fromAccount;
+	private int fromAccountId;
 	private Account toAccount;
+	private int toAccountId;
 	private String transactionStatus;
 	private double amount;
 	
@@ -14,14 +16,16 @@ public class Transactions {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Transactions(int transactionId, String date, String type, Account accountId, Account toAccount,
-			String transactionStatus, double amount) {
+	public Transactions(int transactionId, String date, String type, Account fromAccount, int fromAccountId,
+			Account toAccount, int toAccountId, String transactionStatus, double amount) {
 		super();
 		this.transactionId = transactionId;
 		this.date = date;
 		this.type = type;
-		this.accountId = accountId;
+		this.fromAccount = fromAccount;
+		this.fromAccountId = fromAccountId;
 		this.toAccount = toAccount;
+		this.toAccountId = toAccountId;
 		this.transactionStatus = transactionStatus;
 		this.amount = amount;
 	}
@@ -50,12 +54,20 @@ public class Transactions {
 		this.type = type;
 	}
 
-	public Account getAccountId() {
-		return accountId;
+	public Account getFromAccount() {
+		return fromAccount;
 	}
 
-	public void setAccountId(Account accountId) {
-		this.accountId = accountId;
+	public void setFromAccount(Account fromAccount) {
+		this.fromAccount = fromAccount;
+	}
+
+	public int getFromAccountId() {
+		return fromAccountId;
+	}
+
+	public void setFromAccountId(int fromAccountId) {
+		this.fromAccountId = fromAccountId;
 	}
 
 	public Account getToAccount() {
@@ -64,6 +76,14 @@ public class Transactions {
 
 	public void setToAccount(Account toAccount) {
 		this.toAccount = toAccount;
+	}
+
+	public int getToAccountId() {
+		return toAccountId;
+	}
+
+	public void setToAccountId(int toAccountId) {
+		this.toAccountId = toAccountId;
 	}
 
 	public String getTransactionStatus() {
@@ -84,9 +104,9 @@ public class Transactions {
 
 	@Override
 	public String toString() {
-		return "Transactions [transactionId=" + transactionId + ", date=" + date + ", type=" + type + ", accountId="
-				+ accountId + ", toAccount=" + toAccount + ", transactionStatus=" + transactionStatus + ", amount="
-				+ amount + "]";
+		return "Transactions [transactionId=" + transactionId + ", date=" + date + ", type=" + type + ", fromAccount="
+				+ fromAccount + ", fromAccountId=" + fromAccountId + ", toAccount=" + toAccount + ", toAccountId="
+				+ toAccountId + ", transactionStatus=" + transactionStatus + ", amount=" + amount + "]";
 	}
 	
 	
