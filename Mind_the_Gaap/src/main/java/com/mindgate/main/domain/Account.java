@@ -12,8 +12,8 @@ public class Account {
 	private Customer customerId;
 	
 	public Account() {
-}
-	
+		
+	}
 
 	public Account(String date, double minimumBalance, double currentBalance, double rateOfInterest, int accountId,
 			String accountType, String accountStatus, Customer customerId) {
