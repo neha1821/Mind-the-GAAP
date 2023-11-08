@@ -10,6 +10,8 @@ public class Account {
 	private String accountType;
 	private String accountStatus;
 	private Customer customerId;
+	
+	
 	public Account() {
 }
 	
