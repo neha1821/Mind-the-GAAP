@@ -9,12 +9,17 @@ import org.springframework.jdbc.core.RowMapper;
 import com.mindgate.main.domain.Account;
 import com.mindgate.main.domain.Customer;
 
-public class AccountRowMapper implements RowMapper<Account> {
+
+public class AccountRowMapper implements RowMapper<Account>{
+	
 	@Autowired
 	Customer customer;
 
+
+
 	@Override
 	public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
+
 
 		CustomerRowMapper customerRowMapper=new CustomerRowMapper();
 		Customer customer=customerRowMapper.mapRow(rs, rowNum);
@@ -31,5 +36,6 @@ public class AccountRowMapper implements RowMapper<Account> {
 				accountType, accountStatus, customer);
 
 		return account;
+
 	}
 }
