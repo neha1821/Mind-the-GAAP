@@ -30,13 +30,13 @@ public class LoginController {
 			return loginServiceInterface.updateLogin(loginDetails);
 		}
 
-		@RequestMapping(value = "logins/{loginId}" , method = RequestMethod.DELETE)
+		@RequestMapping(value = "login/{loginId}" , method = RequestMethod.DELETE)
 		public boolean deleteLogin(@PathVariable int loginId) {
 			return loginServiceInterface.deleteLogin(loginId);
 		}
 
-		@RequestMapping(value = "logins/{loginId}" , method = RequestMethod.GET )
-		public LoginDetails getLoginByLoginId(int loginId) {
+		@RequestMapping(value = "login/{loginId}" , method = RequestMethod.GET )
+		public LoginDetails getLoginByLoginId(@PathVariable int loginId) {
 			return loginServiceInterface.getLoginByLoginId(loginId);
 		}
 
