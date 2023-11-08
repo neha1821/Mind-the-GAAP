@@ -30,4 +30,10 @@ public class TransactionController {
 	public Transactions getTransactionByTransactionId(@PathVariable int transaction_id) {
 		return transactionServiceInterface.getTransactionByTransactionId(transaction_id);
 	} 
+	
+	@RequestMapping(value = "onetransactionid/{transaction_id}" , method = RequestMethod.GET )
+	public Transactions insertTransactions(@PathVariable int transaction_id) {
+		return transactionServiceInterface.getTransactionByTransactionId(transaction_id);
+	} 
+	
 }
