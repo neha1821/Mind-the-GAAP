@@ -19,7 +19,7 @@ public class LoginController {
 	@Autowired
 	private LoginServiceInterface loginServiceInterface;
 	
-	// http://localhost:8081/loginapi/logins
+	// http://localhost:8082/loginapi/logins
 		@RequestMapping(value = "logins" , method = RequestMethod.POST )
 		public boolean addNewLogin(@RequestBody LoginDetails loginDetails) {
 			return loginServiceInterface.addNewLogin(loginDetails);

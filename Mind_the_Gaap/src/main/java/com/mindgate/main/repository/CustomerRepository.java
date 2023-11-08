@@ -41,8 +41,8 @@ public class CustomerRepository implements CustomerRepositoryInterface {
 	}
 
 	@Override
-	public boolean deleteCustomer(int customer_id) {
-		int rowCount = jdbcTemplate.update(DELETE_EXISTING_CUSTOMER, customer_id);
+	public boolean deleteCustomer(int customerId) {
+		int rowCount = jdbcTemplate.update(DELETE_EXISTING_CUSTOMER, customerId);
 		if (rowCount > 0)
 			return true;
 		else
@@ -50,9 +50,9 @@ public class CustomerRepository implements CustomerRepositoryInterface {
 	}
 
 	@Override
-	public Customer getCustomerByCustomerId(int customer_id) {
+	public Customer getCustomerByCustomerId(int customerId) {
 		CustomerRowMapper customerRowMapper = new CustomerRowMapper();
-		 return jdbcTemplate.queryForObject(SELECT_ONE_CUSTOMER,customerRowMapper, customer_id);
+		 return jdbcTemplate.queryForObject(SELECT_ONE_CUSTOMER,customerRowMapper, customerId);
 	}
 
 	@Override
