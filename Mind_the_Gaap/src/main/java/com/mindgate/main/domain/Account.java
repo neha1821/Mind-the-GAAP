@@ -11,7 +11,7 @@ public class Account {
 	private String accountStatus;
 	private Customer customerId;
 	public Account() {
-System.out.println("hi hii");	}
+}
 	
 
 	public Account(String date, double minimumBalance, double currentBalance, double rateOfInterest, int accountId,
