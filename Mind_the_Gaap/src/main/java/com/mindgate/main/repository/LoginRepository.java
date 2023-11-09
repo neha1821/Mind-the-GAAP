@@ -64,6 +64,7 @@ public class LoginRepository implements LoginRepositoryInterface {
 	@Override
 	public List<LoginDetails> getAllLogins() {
 		LoginRowMapper loginRowMapper = new LoginRowMapper();
+		System.out.println("hii");
 		return jdbcTemplate.query(SELECT_ALL_LOGINS, loginRowMapper);
 
 	}
