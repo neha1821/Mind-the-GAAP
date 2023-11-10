@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.mindgate.main.domain.Account;
 import com.mindgate.main.domain.LoginDetails;
 
 @Repository
@@ -14,16 +15,20 @@ public class LoginRepository implements LoginRepositoryInterface {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	int rowCount=0;
+	LoginDetails loginDetails;
+	private LoginRowMapper loginRowMapper;
+	
 	private final static String INSERT_NEW_LOGIN = "insert into login_details values(login_id_sequence.nextVal,?,?,?,?,?)";
-	private final static String UPDATE_EXISTING_LOGIN = "update login_details set password = ?,count=?, type_of_member=?, login_status = ? where login_id = ?";
-	private final static String DELETE_EXISTING_LOGIN = "delete from login_details where login_id=?";
-	private final static String SELECT_ALL_LOGINS = "select * from login_details";
-	private final static String SELECT_ONE_LOGIN = " select * from login_details where login_id = ?";
+	private final static String UPDATE_EXISTING_LOGIN = "update login_details set password = ?,count=?, type_of_member=?, Login_Status = ? where login_id = ?";
+	private final static String DELETE_EXISTING_LOGIN = "delete from login_details where login_id =?";
+	private final static String SELECT_ALL_LOGINS = "select * from login_details a,customer_details c where a.customer_id=c.customer_id";
+	private final static String SELECT_ONE_LOGIN = " select *  from login_details,customer_details where login_details.customer_id=customer_details.customer_id  and login_details.login_id=?";
 
 	
 	@Override
 	public boolean addNewLogin(LoginDetails loginDetails) {
-		Object[] parameters = { loginDetails.getCustomerId(),loginDetails.getPassword(),loginDetails.getCount(),loginDetails.getTypeOfMember(),loginDetails.getLoginStatus()};
+		Object[] parameters = { loginDetails.getCustomerId().getCustomerId(),loginDetails.getPassword(),loginDetails.getCount(),loginDetails.getTypeOfMember(),loginDetails.getLoginStatus()};
 		int rowCount = jdbcTemplate.update(INSERT_NEW_LOGIN, parameters);
 		if (rowCount > 0)
 			return true;
@@ -32,7 +37,7 @@ public class LoginRepository implements LoginRepositoryInterface {
 
 	@Override
 	public LoginDetails updateLogin(LoginDetails loginDetails) {
-		Object[] parameters = {loginDetails.getLoginId(),loginDetails.getCustomerId(),loginDetails.getPassword(),loginDetails.getCount(),loginDetails.getTypeOfMember(),loginDetails.getLoginStatus() };
+		Object[] parameters = {loginDetails.getLoginId(),loginDetails.getCustomerId().getCustomerId(),loginDetails.getPassword(),loginDetails.getCount(),loginDetails.getTypeOfMember(),loginDetails.getLoginStatus() };
 		int rowCount = jdbcTemplate.update(UPDATE_EXISTING_LOGIN, parameters);
 		if (rowCount > 0) {
 			return getLoginByLoginId(loginDetails.getLoginId());
@@ -59,6 +64,7 @@ public class LoginRepository implements LoginRepositoryInterface {
 	@Override
 	public List<LoginDetails> getAllLogins() {
 		LoginRowMapper loginRowMapper = new LoginRowMapper();
+		System.out.println("hii");
 		return jdbcTemplate.query(SELECT_ALL_LOGINS, loginRowMapper);
 
 	}
