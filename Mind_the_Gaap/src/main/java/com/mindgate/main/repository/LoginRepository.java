@@ -37,7 +37,7 @@ public class LoginRepository implements LoginRepositoryInterface {
 
 	@Override
 	public LoginDetails updateLogin(LoginDetails loginDetails) {
-		Object[] parameters = {loginDetails.getLoginId(),loginDetails.getCustomerId().getCustomerId(),loginDetails.getPassword(),loginDetails.getCount(),loginDetails.getTypeOfMember(),loginDetails.getLoginStatus() };
+		Object[] parameters = {loginDetails.getPassword(),loginDetails.getCount(),loginDetails.getTypeOfMember(),loginDetails.getLoginStatus(),loginDetails.getLoginId() };
 		int rowCount = jdbcTemplate.update(UPDATE_EXISTING_LOGIN, parameters);
 		if (rowCount > 0) {
 			return getLoginByLoginId(loginDetails.getLoginId());
