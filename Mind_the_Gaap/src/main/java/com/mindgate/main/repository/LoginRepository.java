@@ -23,12 +23,12 @@ public class LoginRepository implements LoginRepositoryInterface {
 	private final static String UPDATE_EXISTING_LOGIN = "update login_details set password = ?,count=?, type_of_member=?, Login_Status = ? where login_id = ?";
 	private final static String DELETE_EXISTING_LOGIN = "delete from login_details where login_id =?";
 	private final static String SELECT_ALL_LOGINS = "select * from login_details a,customer_details c where a.customer_id=c.customer_id";
-	private final static String SELECT_ONE_LOGIN = " select *  from login_details,customer_details where login_details.customer_id=customer_details.customer_id  and login_details.login_id=?";
+	private final static String SELECT_ONE_LOGIN =  " select *  from login_details,customer_details where login_details.customer_id=customer_details.customer_id  and login_details.login_id=?";
 
 	
 	@Override
 	public boolean addNewLogin(LoginDetails loginDetails) {
-		Object[] parameters = { loginDetails.getCustomerId().getCustomerId(),loginDetails.getPassword(),loginDetails.getCount(),loginDetails.getTypeOfMember(),loginDetails.getLoginStatus()};
+		Object[] parameters =  { loginDetails.getCustomerId().getCustomerId(),loginDetails.getPassword(),loginDetails.getCount(),loginDetails.getTypeOfMember(),loginDetails.getLoginStatus()};
 		int rowCount = jdbcTemplate.update(INSERT_NEW_LOGIN, parameters);
 		if (rowCount > 0)
 			return true;
