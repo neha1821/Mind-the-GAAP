@@ -33,6 +33,7 @@ public class TransactionController {
 		return transactionServiceInterface.getTransactionByTransactionId(transactionId);
 	} 
 	
+
 	//http://localhost:8081/transactionscrudapi/updateTransaction
 	@RequestMapping(value = "updateTransaction", method = RequestMethod.PUT)
 	public Transactions updateTransaction(@RequestBody Transactions transactions) {
@@ -48,5 +49,6 @@ public class TransactionController {
 	public boolean deleteTransaction(@PathVariable int transactionId) {
 		return transactionServiceInterface.deleteTransaction(transactionId);
 	}
+
 	
 }

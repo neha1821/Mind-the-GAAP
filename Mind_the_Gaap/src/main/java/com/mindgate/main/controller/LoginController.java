@@ -13,30 +13,30 @@ import com.mindgate.main.domain.LoginDetails;
 import com.mindgate.main.service.LoginServiceInterface;
 
 @RestController
-@RequestMapping("loginapi")
+@RequestMapping("loginCRUDapi")
 public class LoginController {
 
 	@Autowired
 	private LoginServiceInterface loginServiceInterface;
 	
-	// http://localhost:8081/loginapi/logins
+	// http://localhost:8082/loginCRUDapi/logins
 		@RequestMapping(value = "logins" , method = RequestMethod.POST )
 		public boolean addNewLogin(@RequestBody LoginDetails loginDetails) {
 			return loginServiceInterface.addNewLogin(loginDetails);
 		}
 
-		@RequestMapping(value = "logins" , method = RequestMethod.PUT)
+		@RequestMapping(value = "login" , method = RequestMethod.PUT)
 		public LoginDetails updateLogin(@RequestBody LoginDetails loginDetails) {
 			return loginServiceInterface.updateLogin(loginDetails);
 		}
 
-		@RequestMapping(value = "logins/{loginId}" , method = RequestMethod.DELETE)
+		@RequestMapping(value = "login/{loginId}" , method = RequestMethod.DELETE)
 		public boolean deleteLogin(@PathVariable int loginId) {
 			return loginServiceInterface.deleteLogin(loginId);
 		}
 
-		@RequestMapping(value = "logins/{loginId}" , method = RequestMethod.GET )
-		public LoginDetails getLoginByLoginId(int loginId) {
+		@RequestMapping(value = "login/{loginId}" , method = RequestMethod.GET )
+		public LoginDetails getLoginByLoginId(@PathVariable int loginId) {
 			return loginServiceInterface.getLoginByLoginId(loginId);
 		}
 

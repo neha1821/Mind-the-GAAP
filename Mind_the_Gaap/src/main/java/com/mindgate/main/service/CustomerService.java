@@ -14,9 +14,9 @@ public class CustomerService implements CustomerServiceInterface {
 	@Autowired
 	private CustomerRepositoryInterface customerRepositoryInterface;
 	
-//	public CustomerService() {
-//		System.out.println("Service");
-//	}
+	public CustomerService() {
+		System.out.println("Service");
+	}
 	
 	@Override
 	public boolean addNewCustomer(Customer customer) {
@@ -29,13 +29,13 @@ public class CustomerService implements CustomerServiceInterface {
 	}
 
 	@Override
-	public boolean deleteCustomer(int customer_id) {
-		return customerRepositoryInterface.deleteCustomer(customer_id);
+	public boolean deleteCustomer(int customerId) {
+		return customerRepositoryInterface.deleteCustomer(customerId);
 	}
 
 	@Override
-	public Customer getCustomerByCustomerId(int customer_id) {
-		return customerRepositoryInterface.getCustomerByCustomerId(customer_id);
+	public Customer getCustomerByCustomerId(int customerId) {
+		return customerRepositoryInterface.getCustomerByCustomerId(customerId);
 	}
 
 	@Override
