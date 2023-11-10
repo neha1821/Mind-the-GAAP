@@ -30,14 +30,14 @@ public class CustomerController {
 		return customerServiceInterface.updateCustomer(customer);
 	}
 
-	@RequestMapping(value = "customers/{customer_id}" , method = RequestMethod.DELETE)
-	public boolean deleteCustomer(@PathVariable int customer_id) {
-		return customerServiceInterface.deleteCustomer(customer_id);
+	@RequestMapping(value = "customers/{customerId}" , method = RequestMethod.DELETE)
+	public boolean deleteCustomer(@PathVariable int customerId) {
+		return customerServiceInterface.deleteCustomer(customerId);
 	}
 
-	@RequestMapping(value = "customers/{customer_id}" , method = RequestMethod.GET )
-	public Customer getCustomerByCustomerId(int customer_id) {
-		return customerServiceInterface.getCustomerByCustomerId(customer_id);
+	@RequestMapping(value = "customers/{customerId}" , method = RequestMethod.GET )
+	public Customer getCustomerByCustomerId(@PathVariable int customerId) {
+		return customerServiceInterface.getCustomerByCustomerId(customerId);
 	}
 
 	@RequestMapping(value = "customers" , method = RequestMethod.GET )

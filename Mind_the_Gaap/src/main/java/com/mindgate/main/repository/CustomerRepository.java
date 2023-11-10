@@ -16,9 +16,9 @@ public class CustomerRepository implements CustomerRepositoryInterface {
 	
 	private final static String INSERT_NEW_CUSTOMER = "insert into customer_details values(?,?,?,?,?,?,?,?,?,?,?,?,?,customer_id_sequence.nextVal,?)";
 	private final static String UPDATE_EXISTING_CUSTOMER = "update customer_details set first_name = ?, last_name = ?, username = ?, password = ?, address_line_1 = ?, address_line_2 = ?, address_line_3 = ?, city = ?, state = ?, zip = ?, phone = ?, cell = ?, email = ?, customer_status = ? where customer_id = ?";
-	private final static String DELETE_EXISTING_CUSTOMER = "delete from customer_details where employee_Id=?";
+	private final static String DELETE_EXISTING_CUSTOMER = "delete from customer_details where customer_Id=?";
 	private final static String SELECT_ALL_CUSTOMERS = "select * from customer_details";
-	private final static String SELECT_ONE_CUSTOMER = " select * from customer_details where employee_Id = ?";
+	private final static String SELECT_ONE_CUSTOMER = " select * from customer_details where customer_Id=?";
 
 	@Override
 	public boolean addNewCustomer(Customer customer) {
