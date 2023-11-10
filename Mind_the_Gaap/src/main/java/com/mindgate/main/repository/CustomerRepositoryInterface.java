@@ -8,8 +8,8 @@ public interface CustomerRepositoryInterface {
 
 	public boolean addNewCustomer(Customer customer);
 	public Customer updateCustomer(Customer customer);
-	public boolean deleteCustomer(int customer_id);
-	public Customer getCustomerByCustomerId(int customer_id);
+	public boolean deleteCustomer(int customerId);
+	public Customer getCustomerByCustomerId(int customerId);
 	public List<Customer> getAllCustomers();
 
 }
