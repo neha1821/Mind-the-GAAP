@@ -33,7 +33,7 @@ public class CustomerRepository implements CustomerRepositoryInterface {
 	@Override
 	public Customer updateCustomer(Customer customer) {
 
-		Object[] parameters = { customer.getFirstName(),customer.getLastName(),customer.getUsername(),customer.getPassword(),customer.getAddressLine1(),customer.getAddressLine2(),customer.getAddressLine3(),customer.getCity(),customer.getState(),customer.getZip(),customer.getPhone(),customer.getCell(),customer.getEmail(),customer.getCustomerId() };
+		Object[] parameters = { customer.getFirstName(),customer.getLastName(),customer.getUsername(),customer.getPassword(),customer.getAddressLine1(),customer.getAddressLine2(),customer.getAddressLine3(),customer.getCity(),customer.getState(),customer.getZip(),customer.getPhone(),customer.getCell(),customer.getEmail(),customer.getCustomerStatus(),customer.getCustomerId() };
 
 	
 		int rowCount = jdbcTemplate.update(UPDATE_EXISTING_CUSTOMER, parameters);
