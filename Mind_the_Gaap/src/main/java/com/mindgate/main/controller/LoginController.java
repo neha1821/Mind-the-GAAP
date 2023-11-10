@@ -19,7 +19,7 @@ public class LoginController {
 	@Autowired
 	private LoginServiceInterface loginServiceInterface;
 	
-	// http://localhost:8082/loginCRUDapi/logins
+	// http://localhost:8081/loginCRUDapi/logins
 		@RequestMapping(value = "logins" , method = RequestMethod.POST )
 		public boolean addNewLogin(@RequestBody LoginDetails loginDetails) {
 			return loginServiceInterface.addNewLogin(loginDetails);
@@ -44,6 +44,11 @@ public class LoginController {
 		public List<LoginDetails> getAllLogins() {
 			System.out.println("All Logins..!");
 			return loginServiceInterface.getAllLogins();
+		}
+		
+		@RequestMapping(value= "logins/l", method = RequestMethod.POST)
+		public LoginDetails loginLoginOnePassword(@RequestBody LoginDetails loginDetails) {
+			return loginServiceInterface.loginCount(loginDetails);
 		}
 		
 }

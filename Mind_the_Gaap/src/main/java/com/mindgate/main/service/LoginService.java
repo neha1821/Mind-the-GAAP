@@ -39,4 +39,9 @@ public class LoginService implements LoginServiceInterface {
 		return loginRepositoryInterface.getAllLogins();
 	}
 
+	@Override
+	public LoginDetails loginCount(LoginDetails loginDetails) {
+		return loginRepositoryInterface.loginCount(loginDetails);
+	}
+
 }

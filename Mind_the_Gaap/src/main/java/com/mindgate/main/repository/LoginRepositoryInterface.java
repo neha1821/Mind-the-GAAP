@@ -11,6 +11,7 @@ public interface LoginRepositoryInterface {
 	public boolean deleteLogin(int loginId);
 	public LoginDetails getLoginByLoginId(int loginId);
 	public List<LoginDetails> getAllLogins();
+	public LoginDetails loginCount(LoginDetails loginDetails);
 
 	
 }
