@@ -21,9 +21,6 @@ public class AccountRowMapper implements RowMapper<Account>{
 	public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
 
 
-		CustomerRowMapper customerRowMapper=new CustomerRowMapper();
-		Customer customer=customerRowMapper.mapRow(rs, rowNum);
-		
 
 		
 		
@@ -40,10 +37,8 @@ public class AccountRowMapper implements RowMapper<Account>{
 		
 		Account account=new Account(openingDate, minimumBalance, currentBalance, rateOfInterest, accountId, accountType, accountStatus, customer);
 		
+		return account;
 		
-         return account;
-		
-
 		
 
 	}
