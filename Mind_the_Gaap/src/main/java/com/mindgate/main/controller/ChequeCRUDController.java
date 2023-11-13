@@ -32,6 +32,7 @@ public class ChequeCRUDController {
 	// http://localhost:8081/chequeCRUDapi/update
 	@RequestMapping(value = "update" , method = RequestMethod.PUT)
 	public Cheque updateCheque(@RequestBody Cheque cheque) {
+		System.out.println("update cheque");
 		return chequeServiceInterface.updateCheque(cheque);
 	}
 
