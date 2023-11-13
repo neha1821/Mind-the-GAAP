@@ -39,6 +39,7 @@ public class ChequeCRUDController {
 	// http://localhost:8081/chequeCRUDapi/delete
 	@RequestMapping(value = "delete/{cheque_id}" , method = RequestMethod.DELETE)
 	public boolean deleteCheque(@PathVariable int cheque_id) {
+		System.out.println("delete cheque");
 		return chequeServiceInterface.deleteCheque(cheque_id);
 	}
 
