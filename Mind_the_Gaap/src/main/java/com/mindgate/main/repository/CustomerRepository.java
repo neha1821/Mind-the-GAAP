@@ -45,7 +45,7 @@ public class CustomerRepository implements CustomerRepositoryInterface {
 
 	@Override
 	public boolean deleteCustomer(int customerId) {
-		int rowCount = jdbcTemplate.update(DELETE_EXISTING_CUSTOMER, customerId);
+		int rowCount =  jdbcTemplate.update(DELETE_EXISTING_CUSTOMER, customerId);
 		if (rowCount > 0)
 			return true;
 		else
