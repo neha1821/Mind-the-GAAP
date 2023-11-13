@@ -23,6 +23,7 @@ public class ChequeRepository implements ChequeRepositoryInterface {
 	@Override
 	public List<Cheque> getAllCheque() {
 		ChequeRowMapper chequeRowMapper = new ChequeRowMapper();
+		System.out.println("get all cheque");
 		return jdbcTemplate.query(SELECT_ALL_CHEQUES, chequeRowMapper);
 	}
 
