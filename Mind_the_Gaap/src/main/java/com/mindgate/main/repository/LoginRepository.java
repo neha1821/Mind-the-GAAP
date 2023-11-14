@@ -25,17 +25,14 @@ public class LoginRepository implements LoginRepositoryInterface {
 	private final static String SELECT_ALL_LOGINS = "select * from login_details a,customer_details c where a.customer_id=c.customer_id";
 	private final static String SELECT_ONE_LOGIN = " select *  from login_details,customer_details where login_details.customer_id=customer_details.customer_id  and login_details.login_id=?";
 	private final static String SELECT_LOGIN = "select * from login_details where login_id = ? and password = ?";
-<<<<<<< HEAD
+
     private final static String SELECT_INACTIVE_LOGINS = "select * from login_details where Login_Status =  'false' ";
 	private final static String INSERT_LOGIN = "insert into login_details values(login_id_sequence.nextVal,?)";
 
 	private final static String SELECT_ONE = " select * from login_details l,customer_details c where l.customer_id=c.customer_id";
 	
     
-=======
-	private final static String SELECT_INACTIVE_LOGINS = "select * from login_details where Login_Status =  'false' ";
 
->>>>>>> branch 'main' of https://github.com/neha1821/Mind-the-GAAP.git
 	@Override
 	public boolean addNewLogin(LoginDetails loginDetails) {
 		Object[] parameters =  { loginDetails.getCustomerId().getCustomerId(),loginDetails.getPassword(),loginDetails.getCount(),loginDetails.getTypeOfMember(),loginDetails.getLoginStatus()};
