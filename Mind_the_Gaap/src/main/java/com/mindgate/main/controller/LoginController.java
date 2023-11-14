@@ -36,8 +36,8 @@ public class LoginController {
 		}
 
 		@RequestMapping(value = "login/{loginId}" , method = RequestMethod.GET )
-		public LoginDetails getLoginByLoginId(@PathVariable int loginId) {
-			return loginServiceInterface.getLoginByLoginId(loginId);
+		public LoginDetails getLoginByLoginId(@RequestBody LoginDetails loginDetails) {
+			return loginServiceInterface.getLoginByLoginId(loginDetails);
 		}
 
 		@RequestMapping(value = "logins" , method = RequestMethod.GET )
@@ -45,5 +45,11 @@ public class LoginController {
 			System.out.println("All Logins..!");
 			return loginServiceInterface.getAllLogins();
 		}
+		
+		@RequestMapping(value= "logins/l", method = RequestMethod.POST)
+        public LoginDetails loginLoginOnePassword(@RequestBody LoginDetails loginDetails) {
+            return loginServiceInterface.loginCount(loginDetails);
+        }
+
 		
 }
