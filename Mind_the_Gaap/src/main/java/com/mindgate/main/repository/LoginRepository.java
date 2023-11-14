@@ -17,6 +17,7 @@ public class LoginRepository implements LoginRepositoryInterface {
 	int rowCount=0;
 	LoginDetails loginDetails;
 	private LoginRowMapper loginRowMapper;
+      
 	
 	
 	private final static String INSERT_NEW_LOGIN = "insert into login_details values(login_id_sequence.nextVal,?,?,?,?,?)";
