@@ -19,7 +19,7 @@ public class TransactionController {
 	@Autowired
 	private TransactionServiceInterface transactionServiceInterface;
 	
-//	("http://localhost:8082/transactionscrudapi/alltransactions")
+//	("http://localhost:8081/transactionscrudapi/alltransactions")
 	@RequestMapping(value = "alltransactions" , method = RequestMethod.GET )
 	public List<Transactions> getAllTransactions() {
 		System.out.println("All Customers");

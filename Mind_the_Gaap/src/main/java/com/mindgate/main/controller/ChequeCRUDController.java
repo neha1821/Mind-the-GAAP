@@ -25,7 +25,6 @@ public class ChequeCRUDController {
 	// http://localhost:8081/chequeCRUDapi/add
 	@RequestMapping(value = "add" , method = RequestMethod.POST )
 	public boolean addNewCheque(@RequestBody Cheque cheque) {
-		System.out.println("add new cheque ");
 		return chequeServiceInterface.addNewCheque(cheque);
 	}
 
