@@ -3,6 +3,7 @@ package com.mindgate.main.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import com.mindgate.main.service.LoginServiceInterface;
 
 @RestController
 @RequestMapping("loginCRUDapi")
+@CrossOrigin("*")
 public class LoginController {
 
 	@Autowired
@@ -50,6 +52,11 @@ public class LoginController {
         public LoginDetails loginLoginOnePassword(@RequestBody LoginDetails loginDetails) {
             return loginServiceInterface.loginCount(loginDetails);
         }
+		
+		@RequestMapping(value = "setLogin" , method = RequestMethod.POST )
+		public LoginDetails setloginByCustomerId (@RequestBody LoginDetails loginDetails) {
+			return loginServiceInterface.setLoginByCustomerId(loginDetails);
+		}
 
 		
 }

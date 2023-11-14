@@ -3,6 +3,7 @@ package com.mindgate.main.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import com.mindgate.main.service.CustomerServiceInterface;
 
 @RestController
 @RequestMapping("customerapi")
+@CrossOrigin("*")
 public class CustomerController {
 
 	@Autowired
@@ -22,6 +24,7 @@ public class CustomerController {
 	// http://localhost:8081/customerCRUDapi/customers
 	@RequestMapping(value = "customers" , method = RequestMethod.POST )
 	public boolean addNewCustomer(@RequestBody Customer customer) {
+		System.out.println(customer);
 		return customerServiceInterface.addNewCustomer(customer);
 	}
 
@@ -44,6 +47,12 @@ public class CustomerController {
 	public List<Customer> getAllCustomers() {
 		System.out.println("All Customers");
 		return customerServiceInterface.getAllCustomers();
+	}
+	
+	@RequestMapping(value = "customersAdd" , method = RequestMethod.POST)
+	public Customer getCustomerIdByUserName(@RequestBody Customer customer) {
+		System.out.println(customer);
+		return customerServiceInterface.addCustomer(customer);
 	}
 	
 }

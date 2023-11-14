@@ -11,5 +11,6 @@ public interface CustomerRepositoryInterface {
 	public boolean deleteCustomer(int customerId);
 	public Customer getCustomerByCustomerId(int customerId);
 	public List<Customer> getAllCustomers();
+	public Customer addCustomer(Customer customer);
 
 }

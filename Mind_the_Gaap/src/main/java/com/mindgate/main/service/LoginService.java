@@ -76,4 +76,9 @@ public class LoginService implements LoginServiceInterface {
 		 return loginRepositoryInterface.getInActive();		
 	}
 
+	@Override
+	public LoginDetails setLoginByCustomerId(LoginDetails loginDetails) {
+		return loginRepositoryInterface.setLoginByCustomerId(loginDetails);
+	}
+
 }
