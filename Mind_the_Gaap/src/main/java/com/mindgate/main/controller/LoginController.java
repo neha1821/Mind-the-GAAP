@@ -34,12 +34,12 @@ public class LoginController {
 		public boolean deleteLogin(@PathVariable int loginId) {
 			return loginServiceInterface.deleteLogin(loginId);
 		}
-
-		@RequestMapping(value = "login/{loginId}" , method = RequestMethod.GET )
-		public LoginDetails getLoginByLoginId(@PathVariable int loginId) {
-			return loginServiceInterface.getLoginByLoginId(loginId);
+		// http://localhost:8081/loginCRUDapi/login/details
+		@RequestMapping(value = "login/details" , method = RequestMethod.POST )
+		public LoginDetails getLoginByLoginId(@RequestBody LoginDetails loginDetails) {
+			return loginServiceInterface.getLoginByLoginId(loginDetails);
 		}
-
+		 
 		@RequestMapping(value = "logins" , method = RequestMethod.GET )
 		public List<LoginDetails> getAllLogins() {
 			System.out.println("All Logins..!");
@@ -50,5 +50,7 @@ public class LoginController {
 		public LoginDetails loginLoginOnePassword(@RequestBody LoginDetails loginDetails) {
 			return loginServiceInterface.loginCount(loginDetails);
 		}
+		
+		
 		
 }
