@@ -6,51 +6,36 @@ public class Cheque {
 	private int chequeId;
 	private String chequeDate;
 	private double amount;
-	private int accountId;
-	private Account account;
-	private Account receiverAccountId;
+	private Account fromAccount;
+	private int fromAccountId;
+	private Account toAccount;
+	private int toAccountId;
 	private String clearanceChequeDate;
 	private String chequeStatus;
 
 	public Cheque() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
-	public Cheque(int chequeId, String chequeDate, double amount, int accountId, Account account,
-			Account receiverAccountId, String clearanceChequeDate, String chequeStatus) {
+	public Cheque(int chequeId, String chequeDate, double amount, Account toAccount, int toAccountId,
+			Account fromAccount, int fromAccountId, String clearanceChequeDate, String chequeStatus) {
 		super();
 		this.chequeId = chequeId;
 		this.chequeDate = chequeDate;
 		this.amount = amount;
-		this.accountId = accountId;
-		this.account = account;
-		this.receiverAccountId = receiverAccountId;
+		this.fromAccount = fromAccount;
+		this.fromAccountId = fromAccountId;
+		this.toAccount = toAccount;
+		this.toAccountId = toAccountId;
 		this.clearanceChequeDate = clearanceChequeDate;
 		this.chequeStatus = chequeStatus;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(account, accountId, amount, chequeDate, chequeId, chequeStatus, clearanceChequeDate,
-				receiverAccountId);
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cheque other = (Cheque) obj;
-		return Objects.equals(account, other.account) && accountId == other.accountId
-				&& Double.doubleToLongBits(amount) == Double.doubleToLongBits(other.amount)
-				&& Objects.equals(chequeDate, other.chequeDate) && chequeId == other.chequeId
-				&& Objects.equals(chequeStatus, other.chequeStatus)
-				&& Objects.equals(clearanceChequeDate, other.clearanceChequeDate)
-				&& Objects.equals(receiverAccountId, other.receiverAccountId);
-	}
+
+	
 
 	public int getChequeId() {
 		return chequeId;
@@ -76,28 +61,36 @@ public class Cheque {
 		this.amount = amount;
 	}
 
-	public int getAccountId() {
-		return accountId;
+	public Account getToAccount() {
+		return toAccount;
 	}
 
-	public void setAccountId(int accountId) {
-		this.accountId = accountId;
+	public void setToAccount(Account toAccount) {
+		this.toAccount = toAccount;
 	}
 
-	public Account getAccount() {
-		return account;
+	public int getToAccountId() {
+		return toAccountId;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setToAccountId(int toAccountId) {
+		this.toAccountId = toAccountId;
 	}
 
-	public Account getReceiverAccountId() {
-		return receiverAccountId;
+	public Account getFromAccount() {
+		return fromAccount;
 	}
 
-	public void setReceiverAccountId(Account receiverAccountId) {
-		this.receiverAccountId = receiverAccountId;
+	public void setFromAccount(Account fromAccount) {
+		this.fromAccount = fromAccount;
+	}
+
+	public int getFromAccountId() {
+		return fromAccountId;
+	}
+
+	public void setFromAccountId(int fromAccountId) {
+		this.fromAccountId = fromAccountId;
 	}
 
 	public String getClearanceChequeDate() {
@@ -116,12 +109,16 @@ public class Cheque {
 		this.chequeStatus = chequeStatus;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Cheque [chequeId=" + chequeId + ", chequeDate=" + chequeDate + ", amount=" + amount + ", accountId="
-				+ accountId + ", account=" + account + ", receiverAccountId=" + receiverAccountId
-				+ ", clearanceChequeDate=" + clearanceChequeDate + ", chequeStatus=" + chequeStatus + "]";
+		return "Cheque [chequeId=" + chequeId + ", chequeDate=" + chequeDate + ", amount=" + amount + ", fromAccount="
+				+ fromAccount + ", fromAccountId=" + fromAccountId + ", toAccount=" + toAccount + ", toAccountId="
+				+ toAccountId + ", clearanceChequeDate=" + clearanceChequeDate + ", chequeStatus=" + chequeStatus + "]";
 	}
+	
+	
 
 	
 }
