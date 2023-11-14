@@ -23,8 +23,6 @@ public class AccountRowMapper implements RowMapper<Account>{
 
 
 		
-		CustomerRowMapper customerRowMapper=new CustomerRowMapper();
-		Customer customer=customerRowMapper.mapRow(rs, rowNum);
 		
 		
 		
@@ -39,10 +37,9 @@ public class AccountRowMapper implements RowMapper<Account>{
 		
 		Account account=new Account(openingDate, minimumBalance, currentBalance, rateOfInterest, accountId, accountType, accountStatus, customer);
 		
+		return account;
 		
-         return account;
 		
-
 
 	}
 }

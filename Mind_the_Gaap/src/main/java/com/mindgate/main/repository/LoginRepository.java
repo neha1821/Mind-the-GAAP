@@ -27,10 +27,9 @@ public class LoginRepository implements LoginRepositoryInterface {
 	private final static String SELECT_LOGIN = "select * from login_details where login_id = ? and password = ?";
 	private final static String SELECT_INACTIVE_LOGINS = "select * from login_details where Login_Status =  'false' ";
 
-	
 	@Override
 	public boolean addNewLogin(LoginDetails loginDetails) {
-		Object[] parameters = { loginDetails.getCustomerId().getCustomerId(),loginDetails.getPassword(),loginDetails.getCount(),loginDetails.getTypeOfMember(),loginDetails.getLoginStatus()};
+		Object[] parameters =  { loginDetails.getCustomerId().getCustomerId(),loginDetails.getPassword(),loginDetails.getCount(),loginDetails.getTypeOfMember(),loginDetails.getLoginStatus()};
 		int rowCount = jdbcTemplate.update(INSERT_NEW_LOGIN, parameters);
 		if (rowCount > 0)
 			return true;
@@ -70,19 +69,20 @@ public class LoginRepository implements LoginRepositoryInterface {
 		return jdbcTemplate.query(SELECT_ALL_LOGINS, loginRowMapper);
 
 	}
-
 	@Override
-	public LoginDetails loginCount(LoginDetails loginDetails) {
-		LoginRowMapper loginRowMapper = new LoginRowMapper();
-		Object[] parameters = { loginDetails.getLoginId(), loginDetails.getPassword() };
-		LoginDetails loginDetails2 = jdbcTemplate.queryForObject(SELECT_LOGIN, loginRowMapper, parameters);
-		return loginDetails2;
-	}
+    public LoginDetails loginCount(LoginDetails loginDetails) {
+        LoginRowMapper loginRowMapper = new LoginRowMapper();
+        Object[] parameters = { loginDetails.getLoginId(), loginDetails.getPassword() };
+        LoginDetails loginDetails2 = jdbcTemplate.queryForObject(SELECT_LOGIN, loginRowMapper, parameters);
+        return loginDetails2;
+    }
 
-	@Override
-	public List<LoginDetails> getInActive() {
-		LoginRowMapper loginDetailsRowMapper = new LoginRowMapper();
-		return jdbcTemplate.query(SELECT_INACTIVE_LOGINS, loginDetailsRowMapper);
-	}
+    @Override
+    public List<LoginDetails> getInActive() {
+        LoginRowMapper loginDetailsRowMapper = new LoginRowMapper();
+        return jdbcTemplate.query(SELECT_INACTIVE_LOGINS, loginDetailsRowMapper);
+    }
+
+	
 
 }

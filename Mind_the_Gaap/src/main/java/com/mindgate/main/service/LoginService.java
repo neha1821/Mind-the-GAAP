@@ -73,6 +73,7 @@ public class LoginService implements LoginServiceInterface {
 	@Override
 	public List<LoginDetails> getInActive() {
 		return loginRepositoryInterface.getInActive();
+
 	}
 
 }

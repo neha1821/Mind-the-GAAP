@@ -3,7 +3,6 @@ package com.mindgate.main.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +19,7 @@ public class TransactionController {
 	@Autowired
 	private TransactionServiceInterface transactionServiceInterface;
 	
-//	("http://localhost:8082/transactionscrudapi/alltransactions")
+//	("http://localhost:8081/transactionscrudapi/alltransactions")
 	@RequestMapping(value = "alltransactions" , method = RequestMethod.GET )
 	public List<Transactions> getAllTransactions() {
 		System.out.println("All Customers");
@@ -33,6 +32,7 @@ public class TransactionController {
 		return transactionServiceInterface.getTransactionByTransactionId(transaction_id);
 	} 
 	
+
 
 	//http://localhost:8081/transactionscrudapi/updateTransaction
 	@RequestMapping(value = "updateTransaction", method = RequestMethod.PUT)

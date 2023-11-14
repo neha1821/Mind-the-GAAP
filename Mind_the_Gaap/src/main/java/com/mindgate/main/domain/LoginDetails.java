@@ -14,7 +14,6 @@ public class LoginDetails {
 
 	public LoginDetails(int loginId, Customer customerId, String password, int count, String typeOfMember,
 			String loginStatus) {
-		super();
 		this.loginId = loginId;
 		this.customerId = customerId;
 		this.password = password;

@@ -29,7 +29,7 @@ public class AccountRepository implements AccountRepositoryInterface {
 		Object[] parameters = { account.getDate(),account.getMinimumBalance(),account.getCurrentBalance(),account.getRateOfInterest(),account.getAccountType(),account.getAccountStatus(),account.getAccountId()};
 		System.out.println(account);
 		int rowCount = jdbcTemplate.update(UPDATE_EXISTING_ACCOUNT, parameters);
-		if (rowCount > 0) {
+		if (rowCount > 0)  {
 			return getAccountByAccountId(account.getAccountId());
 		}
 		return null;

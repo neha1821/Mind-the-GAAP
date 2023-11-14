@@ -19,7 +19,6 @@ public class Customer {
 	private String customerStatus;
 
 	public Customer() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Customer(String firstName, String lastName, String username, String password, String addressLine1,

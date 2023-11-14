@@ -31,12 +31,14 @@ public class ChequeCRUDController {
 	// http://localhost:8081/chequeCRUDapi/update
 	@RequestMapping(value = "update" , method = RequestMethod.PUT)
 	public Cheque updateCheque(@RequestBody Cheque cheque) {
+		System.out.println("update cheque");
 		return chequeServiceInterface.updateCheque(cheque);
 	}
 
 	// http://localhost:8081/chequeCRUDapi/delete
 	@RequestMapping(value = "delete/{cheque_id}" , method = RequestMethod.DELETE)
 	public boolean deleteCheque(@PathVariable int cheque_id) {
+		System.out.println("delete cheque");
 		return chequeServiceInterface.deleteCheque(cheque_id);
 	}
 
