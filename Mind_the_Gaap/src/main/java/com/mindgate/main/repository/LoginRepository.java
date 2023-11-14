@@ -18,6 +18,7 @@ public class LoginRepository implements LoginRepositoryInterface {
 	LoginDetails loginDetails;
 	private LoginRowMapper loginRowMapper;
 	
+	
 	private final static String INSERT_NEW_LOGIN = "insert into login_details values(login_id_sequence.nextVal,?,?,?,?,?)";
 	private final static String UPDATE_EXISTING_LOGIN = "update login_details set password = ?,count=?, type_of_member=?, Login_Status = ? where login_id = ?";
 	private final static String DELETE_EXISTING_LOGIN = "delete from login_details where login_id =?";

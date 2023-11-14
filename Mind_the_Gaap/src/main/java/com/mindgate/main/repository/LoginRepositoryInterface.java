@@ -14,5 +14,4 @@ public interface LoginRepositoryInterface {
 	public LoginDetails loginCount(LoginDetails loginDetails);
 	public List<LoginDetails> getInActive();
 
-	
 }

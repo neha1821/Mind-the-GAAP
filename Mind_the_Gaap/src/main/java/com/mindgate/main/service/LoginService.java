@@ -21,6 +21,7 @@ public class LoginService implements LoginServiceInterface {
 
 	@Override
 	public LoginDetails updateLogin(LoginDetails loginDetails) {
+		System.out.println("Updated succesfully...!!!");
 		return loginRepositoryInterface.updateLogin(loginDetails);
 	}
 
