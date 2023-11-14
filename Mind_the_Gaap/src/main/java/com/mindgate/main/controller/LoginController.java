@@ -25,6 +25,7 @@ public class LoginController {
 			return loginServiceInterface.addNewLogin(loginDetails);
 		}
 
+		// http://localhost:8081/loginCRUDapi/login
 		@RequestMapping(value = "login" , method = RequestMethod.PUT)
 		public LoginDetails updateLogin(@RequestBody LoginDetails loginDetails) {
 			return loginServiceInterface.updateLogin(loginDetails);
