@@ -82,6 +82,8 @@ public class LoginRepository implements LoginRepositoryInterface {
         LoginRowMapper loginDetailsRowMapper = new LoginRowMapper();
         return jdbcTemplate.query(SELECT_INACTIVE_LOGINS, loginDetailsRowMapper);
     }
+    
+
 
 	
 
