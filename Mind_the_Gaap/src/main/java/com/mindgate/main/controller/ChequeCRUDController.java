@@ -35,15 +35,15 @@ public class ChequeCRUDController {
 	}
 
 	// http://localhost:8081/chequeCRUDapi/delete
-	@RequestMapping(value = "delete/{cheque_id}" , method = RequestMethod.DELETE)
-	public boolean deleteCheque(@PathVariable int cheque_id) {
-		return chequeServiceInterface.deleteCheque(cheque_id);
+	@RequestMapping(value = "delete/{chequeId}" , method = RequestMethod.DELETE)
+	public boolean deleteCheque(@PathVariable int chequeId) {
+		return chequeServiceInterface.deleteCheque(chequeId);
 	}
 
 	// http://localhost:8081/chequeCRUDapi/getone
-	@RequestMapping(value = "getone/{cheque_id}" , method = RequestMethod.GET )
-	public Cheque getChequeByChequeId(@PathVariable int cheque_id) {
-		return chequeServiceInterface.getChequeByChequeId(cheque_id);
+	@RequestMapping(value = "getone/{chequeId}" , method = RequestMethod.GET )
+	public Cheque getChequeByChequeId(@PathVariable int chequeId) {
+		return chequeServiceInterface.getChequeByChequeId(chequeId);
 	}
 
 	// http://localhost:8081/chequeCRUDapi/getall
