@@ -34,7 +34,7 @@ public class LoginService implements LoginServiceInterface {
 		LoginDetails existingLoginDetails = loginRepositoryInterface.getLoginByLoginId(loginDetails);
 		if ((existingLoginDetails.getCount() <= 3 ) && existingLoginDetails.getLoginStatus().equalsIgnoreCase("success") && existingLoginDetails.getPassword().equals(loginDetails.getPassword())) {
 			existingLoginDetails.setPassword("");
-			System.out.println("count is increasing .....!!!");
+			System.out.println("count is increasing....!!!");
 			return existingLoginDetails;
 		} else {
 			if (existingLoginDetails.getCount() < 2) {
