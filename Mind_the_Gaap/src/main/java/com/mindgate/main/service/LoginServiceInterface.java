@@ -12,7 +12,12 @@ public interface LoginServiceInterface {
 	public LoginDetails getLoginByLoginId(LoginDetails loginDetails);
 	public List<LoginDetails> getAllLogins();
 	public LoginDetails loginCount(LoginDetails loginDetails);
+
     public List<LoginDetails> getInActive();
     public LoginDetails setLoginByCustomerId(LoginDetails loginDetails);
 	
+
+
+
+
 }

@@ -27,6 +27,7 @@ public class LoginController {
 			return loginServiceInterface.addNewLogin(loginDetails);
 		}
 
+		// http://localhost:8081/loginCRUDapi/login
 		@RequestMapping(value = "login" , method = RequestMethod.PUT)
 		public LoginDetails updateLogin(@RequestBody LoginDetails loginDetails) {
 			return loginServiceInterface.updateLogin(loginDetails);
@@ -36,12 +37,12 @@ public class LoginController {
 		public boolean deleteLogin(@PathVariable int loginId) {
 			return loginServiceInterface.deleteLogin(loginId);
 		}
-
-		@RequestMapping(value = "login/{loginId}" , method = RequestMethod.GET )
+		// http://localhost:8081/loginCRUDapi/login/details
+		@RequestMapping(value = "login/details" , method = RequestMethod.POST )
 		public LoginDetails getLoginByLoginId(@RequestBody LoginDetails loginDetails) {
 			return loginServiceInterface.getLoginByLoginId(loginDetails);
 		}
-
+		 
 		@RequestMapping(value = "logins" , method = RequestMethod.GET )
 		public List<LoginDetails> getAllLogins() {
 			System.out.println("All Logins..!");
@@ -49,6 +50,7 @@ public class LoginController {
 		}
 		
 		@RequestMapping(value= "logins/l", method = RequestMethod.POST)
+
         public LoginDetails loginLoginOnePassword(@RequestBody LoginDetails loginDetails) {
             return loginServiceInterface.loginCount(loginDetails);
         }
@@ -57,6 +59,8 @@ public class LoginController {
 		public LoginDetails setloginByCustomerId (@RequestBody LoginDetails loginDetails) {
 			return loginServiceInterface.setLoginByCustomerId(loginDetails);
 		}
+
+		
 
 		
 }

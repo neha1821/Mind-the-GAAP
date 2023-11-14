@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.mindgate.main.domain.Account;
 import com.mindgate.main.domain.LoginDetails;
 
 @Repository
@@ -19,18 +18,24 @@ public class LoginRepository implements LoginRepositoryInterface {
 	LoginDetails loginDetails;
 	private LoginRowMapper loginRowMapper;
 	
+	
 	private final static String INSERT_NEW_LOGIN = "insert into login_details values(login_id_sequence.nextVal,?,?,?,?,?)";
 	private final static String UPDATE_EXISTING_LOGIN = "update login_details set password = ?,count=?, type_of_member=?, Login_Status = ? where login_id = ?";
 	private final static String DELETE_EXISTING_LOGIN = "delete from login_details where login_id =?";
 	private final static String SELECT_ALL_LOGINS = "select * from login_details a,customer_details c where a.customer_id=c.customer_id";
-	private final static String SELECT_ONE_LOGIN =  " select *  from login_details,customer_details where login_details.customer_id=customer_details.customer_id  and login_details.login_id=?";
+	private final static String SELECT_ONE_LOGIN = " select *  from login_details,customer_details where login_details.customer_id=customer_details.customer_id  and login_details.login_id=?";
 	private final static String SELECT_LOGIN = "select * from login_details where login_id = ? and password = ?";
+<<<<<<< HEAD
     private final static String SELECT_INACTIVE_LOGINS = "select * from login_details where Login_Status =  'false' ";
 	private final static String INSERT_LOGIN = "insert into login_details values(login_id_sequence.nextVal,?)";
 
 	private final static String SELECT_ONE = " select * from login_details l,customer_details c where l.customer_id=c.customer_id";
 	
     
+=======
+	private final static String SELECT_INACTIVE_LOGINS = "select * from login_details where Login_Status =  'false' ";
+
+>>>>>>> branch 'main' of https://github.com/neha1821/Mind-the-GAAP.git
 	@Override
 	public boolean addNewLogin(LoginDetails loginDetails) {
 		Object[] parameters =  { loginDetails.getCustomerId().getCustomerId(),loginDetails.getPassword(),loginDetails.getCount(),loginDetails.getTypeOfMember(),loginDetails.getLoginStatus()};
@@ -62,7 +67,7 @@ public class LoginRepository implements LoginRepositoryInterface {
 	@Override
 	public LoginDetails getLoginByLoginId(LoginDetails loginDetails) {
 		LoginRowMapper loginRowMapper = new LoginRowMapper();
-		return jdbcTemplate.queryForObject(SELECT_ONE_LOGIN,loginRowMapper,loginDetails.getLoginId());
+		return jdbcTemplate.queryForObject(SELECT_ONE_LOGIN,loginRowMapper, loginDetails.getLoginId());
 
 	}
 
@@ -98,5 +103,8 @@ public class LoginRepository implements LoginRepositoryInterface {
 		}
 		return null;
 	}
+
+	
+
 
 }
