@@ -34,9 +34,9 @@ public class AccountController {
 		return accountServiceInterface.updateAccount(account);
 	}
 	
-	@RequestMapping(value = "account/{account_id}" , method = RequestMethod.DELETE)
-	public boolean deleteCustomer(@PathVariable int account_id) {
-		return accountServiceInterface.deleteAccount(account_id);
+	@RequestMapping(value = "account/{accountId}" , method = RequestMethod.DELETE)
+	public boolean deleteCustomer(@PathVariable int accountId) {
+		return accountServiceInterface.deleteAccount(accountId);
 	}
 
 	@RequestMapping(value = "accounts", method = RequestMethod.GET)

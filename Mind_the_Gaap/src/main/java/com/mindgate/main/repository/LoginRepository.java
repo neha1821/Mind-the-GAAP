@@ -90,9 +90,11 @@ public class LoginRepository implements LoginRepositoryInterface {
         return jdbcTemplate.query(SELECT_INACTIVE_LOGINS, loginDetailsRowMapper);
     }
 
+
 	@Override
 	public LoginDetails setLoginByCustomerId(LoginDetails loginDetails){
 		Object[] parameters =  { loginDetails.getCustomerId()};
+
 
 		int rowCount = jdbcTemplate.update(INSERT_LOGIN, parameters);
 		if (rowCount > 0) {

@@ -64,10 +64,7 @@ public class AccountRepository implements AccountRepositoryInterface {
 
 	@Override
 	public List<Account> getAllAccount() {
-		accountRowMapper=new AccountRowMapper();
-		
-		
+		accountRowMapper=new AccountRowMapper();		
 		return jdbcTemplate.query(SELECT_ALL_ACCOUNT,accountRowMapper);
 	}
-
 }
