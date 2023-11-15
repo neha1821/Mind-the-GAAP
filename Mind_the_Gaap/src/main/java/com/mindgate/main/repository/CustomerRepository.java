@@ -19,6 +19,8 @@ public class CustomerRepository implements CustomerRepositoryInterface {
 	private final static String DELETE_EXISTING_CUSTOMER = "delete from customer_details where customer_Id=?";
 	private final static String SELECT_ALL_CUSTOMERS = "select * from customer_details";
 	private final static String SELECT_ONE_CUSTOMER = " select * from customer_details where customer_Id=?";
+	private final static String SELECT_ONE = " select * from customer_details where username=?";
+	
 
 	@Override
 	public boolean addNewCustomer(Customer customer) {
@@ -62,6 +64,20 @@ public class CustomerRepository implements CustomerRepositoryInterface {
 	public List<Customer> getAllCustomers() {
 		CustomerRowMapper customerRowMapper = new CustomerRowMapper();
 		return jdbcTemplate.query(SELECT_ALL_CUSTOMERS, customerRowMapper);
+	}
+
+	@Override
+	public Customer addCustomer(Customer customer) {
+		Object[] parameters = { customer.getFirstName(),customer.getLastName(),customer.getUsername(),customer.getPassword(),customer.getAddressLine1(),customer.getAddressLine2(),customer.getAddressLine3(),customer.getCity(),customer.getState(),customer.getZip(),customer.getPhone(),customer.getCell(),customer.getEmail(),customer.getCustomerStatus()};
+		int rowCount = jdbcTemplate.update(INSERT_NEW_CUSTOMER, parameters);
+		if (rowCount > 0) {
+//			return getCustomerByCustomerId(customer.getCustomerId());
+			CustomerRowMapper customerRowMapper = new CustomerRowMapper();
+			 return jdbcTemplate.queryForObject(SELECT_ONE,customerRowMapper, customer.getUsername());
+			
+			
+		}
+		return null;
 	}
 
 }

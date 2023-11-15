@@ -16,6 +16,7 @@ public class AccountRepository implements AccountRepositoryInterface {
 
 	int rowCount = 0;
 	Account account;
+	
 	private AccountRowMapper accountRowMapper;
 
 	private final static String INSERT_NEW_ACCOUNT = "insert into account_details values(?,?,?,?,account_id_sequence.nextVal,?,?,?)";
@@ -82,5 +83,4 @@ public class AccountRepository implements AccountRepositoryInterface {
 		accountRowMapper = new AccountRowMapper();
 		return jdbcTemplate.query(SELECT_ALL_CUSTOMER_ACCOUNT, accountRowMapper, customerId);
 	}
-
 }

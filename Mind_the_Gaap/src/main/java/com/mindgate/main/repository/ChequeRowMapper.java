@@ -82,6 +82,7 @@ public class ChequeRowMapper implements RowMapper<Cheque> {
 		double amount = rs.getDouble("amount");
 		String clearanceChequeDate = rs.getString("clearance_cheque_date");
 		String chequeStatus = rs.getString("cheque_status");
+		
 
 		Cheque cheque = new Cheque(chequeId, chequeDate, amount,  fromAccount, accountId,toAccount,toAccountId, clearanceChequeDate, chequeStatus);
 		return cheque;

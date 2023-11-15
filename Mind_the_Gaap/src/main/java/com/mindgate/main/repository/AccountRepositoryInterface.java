@@ -12,4 +12,5 @@ public interface AccountRepositoryInterface {
 	Account getAccountByAccountId(int accountId);
 	List<Account> getAllAccount();
 	List<Account> getAccountByCustomerId(int customerId);
+
 }

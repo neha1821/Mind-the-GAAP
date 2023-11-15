@@ -3,6 +3,7 @@ package com.mindgate.main.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import com.mindgate.main.service.TransactionServiceInterface;
 
 @RestController
 @RequestMapping("transactionscrudapi")
+@CrossOrigin("*")
 public class TransactionController {
 	
 	@Autowired
@@ -27,9 +29,9 @@ public class TransactionController {
 	} 
 	
 	//http://localhost:8081/transactionscrudapi/onetransactionid/100004
-	@RequestMapping(value = "onetransactionid/{transaction_id}" , method = RequestMethod.GET )
-	public Transactions getTransactionByTransactionId(@PathVariable int transaction_id) {
-		return transactionServiceInterface.getTransactionByTransactionId(transaction_id);
+	@RequestMapping(value = "onetransactionid/{transactionId}" , method = RequestMethod.GET )
+	public Transactions getTransactionByTransactionId(@PathVariable int transactionId) {
+		return transactionServiceInterface.getTransactionByTransactionId(transactionId);
 	} 
 	
 

@@ -51,9 +51,17 @@ public class LoginController {
 		}
 		
 		@RequestMapping(value= "logins/l", method = RequestMethod.POST)
-		public LoginDetails loginLoginOnePassword(@RequestBody LoginDetails loginDetails) {
-			return loginServiceInterface.loginCount(loginDetails);
-		}
+
+        public LoginDetails loginLoginOnePassword(@RequestBody LoginDetails loginDetails) {
+            return loginServiceInterface.loginCount(loginDetails);
+        }
 		
+		@RequestMapping(value = "setLogin" , method = RequestMethod.POST )
+		public LoginDetails setloginByCustomerId (@RequestBody LoginDetails loginDetails) {
+			return loginServiceInterface.setLoginByCustomerId(loginDetails);
+		}
+
+		
+
 		
 }

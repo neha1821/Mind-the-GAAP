@@ -43,4 +43,10 @@ public class CustomerService implements CustomerServiceInterface {
 		return customerRepositoryInterface.getAllCustomers();
 	}
 
+	@Override
+	public Customer addCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		return customerRepositoryInterface.addCustomer(customer);
+	}
+
 }
