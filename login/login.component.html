@@ -1,0 +1,21 @@
+<form (ngSubmit)="validation()">
+    <div class="container">
+        
+      <label for="loginId"><b>Login Id</b></label>
+      <input type="text" placeholder="Enter Login Id" [(ngModel)]="login.loginId" name="LoginId" required>
+  
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" [(ngModel)]="login.password" name="psw" required>
+  
+      <button type="submit">Login</button>
+      <a href="addCustomer">create an account </a><br>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+  
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <span class="psw"> <a href="#">Forgot password?</a></span>
+    </div>
+  </form>
