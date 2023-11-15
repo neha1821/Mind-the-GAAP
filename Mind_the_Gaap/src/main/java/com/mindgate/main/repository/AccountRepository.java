@@ -23,7 +23,8 @@ public class AccountRepository implements AccountRepositoryInterface {
 	private final static String SELECT_ALL_ACCOUNT = "select *  from account_details a,customer_details c where a.customer_id=c.customer_id";
 	private final static String SELECT_ONE_ACCOUNT = "select *  from account_details,customer_details where account_details.customer_id=customer_details.customer_id  and account_details.account_id=?";
     //select  opening_date,minimum_balance,current_balance,rate_of_interest,account_id,account_type,account_status,customer_details.customer_id  from account_details,customer_details where account_details.customer_id=customer_details.customer_id and account_details.account_id=?
-
+//	private final static String SELECT_ALL_CUSTOMER_ACCOUNT = "select * from account_details  ";
+	
 	@Override
 	public Account updateAccount(Account account) {
 		Object[] parameters = { account.getDate(),account.getMinimumBalance(),account.getCurrentBalance(),account.getRateOfInterest(),account.getAccountType(),account.getAccountStatus(),account.getAccountId()};
@@ -69,5 +70,11 @@ public class AccountRepository implements AccountRepositoryInterface {
 		
 		return jdbcTemplate.query(SELECT_ALL_ACCOUNT,accountRowMapper);
 	}
+
+//	@Override
+//	public List<Account> getAccountByCustomerId(int customerId) {
+//		accountRowMapper = new AccountRowMapper();
+//		return jdbcTemplate.queryForObject(DELETE_EXISTING_ACCOUNT, null, null);
+//	}
 
 }
