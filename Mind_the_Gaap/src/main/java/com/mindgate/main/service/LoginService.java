@@ -41,7 +41,7 @@ public class LoginService implements LoginServiceInterface {
 			if (existingLoginDetails.getCount() < 2) {
 				existingLoginDetails.setCount(existingLoginDetails.getCount() + 1);
 				updateLogin(existingLoginDetails);
-				existingLoginDetails.setPassword("null");
+				existingLoginDetails.setPassword("NULL");
 				existingLoginDetails.setLoginStatus("Success");
 				loginRepositoryInterface.updateLogin(existingLoginDetails);
 				existingLoginDetails.setTypeOfMember("");
@@ -49,7 +49,7 @@ public class LoginService implements LoginServiceInterface {
 			} else {
 				existingLoginDetails.setCount(existingLoginDetails.getCount() + 1);
 				existingLoginDetails.setLoginStatus("Fail");
-				existingLoginDetails.setPassword("null");
+				existingLoginDetails.setPassword("NULL");
 				existingLoginDetails.setTypeOfMember("");
 				updateLogin(existingLoginDetails);
 				loginRepositoryInterface.updateLogin(existingLoginDetails);

@@ -12,18 +12,14 @@ import com.mindgate.main.domain.Customer;
 
 public class AccountRowMapper implements RowMapper<Account>{
 	
-	@Autowired
-	Customer customer;
-
-
+//	@Autowired
+//	Customer customer;
 
 	@Override
 	public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-
-
 		
-		
+		CustomerRowMapper customerRowMapper = new CustomerRowMapper();
 		
 		
 		String openingDate =rs.getString("opening_date");
@@ -35,7 +31,7 @@ public class AccountRowMapper implements RowMapper<Account>{
 		String accountStatus =rs.getString("account_status");
 		
 		
-		Account account=new Account(openingDate, minimumBalance, currentBalance, rateOfInterest, accountId, accountType, accountStatus, customer);
+		Account account=new Account(openingDate, minimumBalance, currentBalance, rateOfInterest, accountId, accountType, accountStatus, customerRowMapper.mapRow(rs, rowNum));
 		
 		return account;
 		

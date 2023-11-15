@@ -1,14 +1,7 @@
 package com.mindgate.main.domain;
 
 public class Account {
-	
-	
-	
-	
 
-  
-
-	
 	private String date;
 	private double minimumBalance;
 	private double currentBalance;
