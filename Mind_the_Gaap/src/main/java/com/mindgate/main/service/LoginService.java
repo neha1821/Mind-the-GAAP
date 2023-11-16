@@ -81,4 +81,15 @@ public class LoginService implements LoginServiceInterface {
 		return loginRepositoryInterface.setLoginByCustomerId(loginDetails);
 	}
 
+	@Override
+	public boolean getAdminLoginByAdminLoginId(LoginDetails loginDetails) {
+		LoginDetails existingLoginDetails = loginRepositoryInterface.getLoginByLoginId(loginDetails);
+		if (  existingLoginDetails.getPassword().equals(loginDetails.getPassword())) {
+			
+			
+			return true;
+		}
+		return false;
+	}
+
 }

@@ -59,6 +59,11 @@ public class LoginController {
 		public LoginDetails setloginByCustomerId (@RequestBody LoginDetails loginDetails) {
 			return loginServiceInterface.setLoginByCustomerId(loginDetails);
 		}
+		
+		@RequestMapping(value= "adminLogin", method = RequestMethod.POST)
+        public boolean getAdminbyAdminId(@RequestBody LoginDetails loginDetails) {
+            return loginServiceInterface.getAdminLoginByAdminLoginId(loginDetails);
+        }
 
 		
 

@@ -15,6 +15,8 @@ public interface LoginServiceInterface {
 
     public List<LoginDetails> getInActive();
     public LoginDetails setLoginByCustomerId(LoginDetails loginDetails);
+    
+    public boolean getAdminLoginByAdminLoginId(LoginDetails loginDetails);
 	
 
 

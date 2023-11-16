@@ -12,8 +12,8 @@ import com.mindgate.main.domain.Customer;
 
 public class AccountRowMapper implements RowMapper<Account>{
 	
-	@Autowired
-	Customer customer;
+	
+	
 
 
 
@@ -22,6 +22,8 @@ public class AccountRowMapper implements RowMapper<Account>{
 
 
 
+		CustomerRowMapper customerRowMapper= new CustomerRowMapper();
+		Customer customer=customerRowMapper.mapRow(rs, rowNum);
 		
 		
 		

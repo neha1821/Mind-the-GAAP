@@ -30,7 +30,7 @@ public class LoginRepository implements LoginRepositoryInterface {
     private final static String SELECT_INACTIVE_LOGINS = "select * from login_details where Login_Status =  'false' ";
 	private final static String INSERT_LOGIN = "insert into login_details values(login_id_sequence.nextVal,?)";
 
-	private final static String SELECT_ONE = " select * from login_details l,customer_details c where l.customer_id=c.customer_id";
+	private final static String SELECT_ONE = " select * from login_details l,customer_details c where l.customer_id=c.customer_id and l.customer_id=?";
 	
     
 
@@ -93,15 +93,28 @@ public class LoginRepository implements LoginRepositoryInterface {
 
 	@Override
 	public LoginDetails setLoginByCustomerId(LoginDetails loginDetails){
-		Object[] parameters =  { loginDetails.getCustomerId()};
+		Object[] parameters =  {loginDetails.getCustomerId().getCustomerId(),"PASSWORD123",0,"CUSTOMER","SUCCESS"};
 
-
-		int rowCount = jdbcTemplate.update(INSERT_LOGIN, parameters);
+        
+		int rowCount = jdbcTemplate.update(INSERT_NEW_LOGIN, parameters);
 		if (rowCount > 0) {
 			LoginRowMapper loginRowMapper = new LoginRowMapper();
+			
 			 return jdbcTemplate.queryForObject(SELECT_ONE,loginRowMapper, loginDetails.getCustomerId().getCustomerId());
 		}
 		return null;
+	}
+
+	@Override
+	public boolean getAdminLoginByAdminLoginId(LoginDetails loginDetails) {
+		 LoginRowMapper loginRowMapper = new LoginRowMapper();
+	        Object[] parameters = { loginDetails.getLoginId(), loginDetails.getPassword() };
+	         loginDetails=  jdbcTemplate.queryForObject(SELECT_LOGIN, loginRowMapper, parameters);
+	        if(loginDetails !=  null)
+	        	return true;
+	        else
+				return false;	        
+		
 	}
 
 	
