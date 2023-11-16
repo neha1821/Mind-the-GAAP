@@ -34,26 +34,25 @@ public class LoginService implements LoginServiceInterface {
 	public LoginDetails getLoginByLoginId(LoginDetails loginDetails) {
 		LoginDetails existingLoginDetails = loginRepositoryInterface.getLoginByLoginId(loginDetails);
 		if ((existingLoginDetails.getCount() <= 3 ) && existingLoginDetails.getLoginStatus().equalsIgnoreCase("success") && existingLoginDetails.getPassword().equals(loginDetails.getPassword())) {
-			existingLoginDetails.setPassword("");
+//			existingLoginDetails.setPassword("");
 			System.out.println("count is increasing....!!!");
 			return existingLoginDetails;
 		} else {
 			if (existingLoginDetails.getCount() < 2) {
 				existingLoginDetails.setCount(existingLoginDetails.getCount() + 1);
 				updateLogin(existingLoginDetails);
-//				existingLoginDetails.setPassword("");
+				existingLoginDetails.setPassword("NULL");
 				existingLoginDetails.setLoginStatus("Success");
 				loginRepositoryInterface.updateLogin(existingLoginDetails);
-//				existingLoginDetails.setTypeOfMember("");
+				existingLoginDetails.setTypeOfMember("");
 				return existingLoginDetails;
 			} else {
 				existingLoginDetails.setCount(existingLoginDetails.getCount() + 1);
-//				existingLoginDetails.setLoginStatus("");
-//				updateLogin(existingLoginDetails);
-//				existingLoginDetails.setPassword("");
 				existingLoginDetails.setLoginStatus("Fail");
+				existingLoginDetails.setPassword("NULL");
+				existingLoginDetails.setTypeOfMember("");
+				updateLogin(existingLoginDetails);
 				loginRepositoryInterface.updateLogin(existingLoginDetails);
-//				existingLoginDetails.setTypeOfMember("");
 				return existingLoginDetails;
 			}
 

@@ -37,6 +37,7 @@ public class LoginController {
 		public boolean deleteLogin(@PathVariable int loginId) {
 			return loginServiceInterface.deleteLogin(loginId);
 		}
+		
 		// http://localhost:8081/loginCRUDapi/login/details
 		@RequestMapping(value = "login/details" , method = RequestMethod.POST )
 		public LoginDetails getLoginByLoginId(@RequestBody LoginDetails loginDetails) {

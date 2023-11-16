@@ -22,8 +22,6 @@ public class AccountController {
 	@Autowired
 	AccountServiceInterface accountServiceInterface;
 	
-	
-	
 	@RequestMapping(value = "accounts" , method = RequestMethod.POST )
 	public boolean addNewAccount(@RequestBody Account account) {
 		return accountServiceInterface.addNewAccount(account);
@@ -44,9 +42,13 @@ public class AccountController {
 		return accountServiceInterface.getAllAccount();
 	}
 
-	@RequestMapping(value = "account/{accountId}", method = RequestMethod.GET)
+	@RequestMapping(value = "accountdetails/{accountId}", method = RequestMethod.GET)
 	public Account accountOne(@PathVariable int accountId) {
 		return accountServiceInterface.getAccountByAccountId(accountId);
 	}
 
+	@RequestMapping(value = "account/{customerId}", method = RequestMethod.GET)
+	public List<Account> getAccountByCustomerId(@PathVariable int customerId){
+		return accountServiceInterface.getAccountByCustomerId(customerId);
+	}
 }

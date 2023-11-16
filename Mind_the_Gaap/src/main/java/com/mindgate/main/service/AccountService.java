@@ -44,4 +44,9 @@ public class AccountService implements AccountServiceInterface {
 				
 	}
 
+	@Override
+	public List<Account> getAccountByCustomerId(int customerId) {
+		return accountRepositoryInterface.getAccountByCustomerId(customerId);
+	}
+
 }

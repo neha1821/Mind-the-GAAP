@@ -15,4 +15,7 @@ public interface AccountServiceInterface {
 	Account getAccountByAccountId(int accountId);
 
 	List<Account> getAllAccount();
+	
+	List<Account> getAccountByCustomerId(int customerId);
+
 }

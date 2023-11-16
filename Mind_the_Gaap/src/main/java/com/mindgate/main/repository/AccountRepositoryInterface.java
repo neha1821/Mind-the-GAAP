@@ -11,5 +11,6 @@ public interface AccountRepositoryInterface {
 	boolean deleteAccount(int accountId);
 	Account getAccountByAccountId(int accountId);
 	List<Account> getAllAccount();
+	List<Account> getAccountByCustomerId(int customerId);
 
 }
