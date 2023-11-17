@@ -51,4 +51,15 @@ public class AccountController {
 	public List<Account> getAccountByCustomerId(@PathVariable int customerId){
 		return accountServiceInterface.getAccountByCustomerId(customerId);
 	}
+	
+	@RequestMapping(value = "accountsByStatus", method = RequestMethod.GET)
+	public List<Account> getAccountsByStatus(){
+		return accountServiceInterface.getAccountsByAccountStatusFailed();
+	}
+	
+	@RequestMapping(value = "accountstatus/{accountId}" , method = RequestMethod.GET)
+	public boolean changeAccountStatus(@PathVariable int accountId) {
+		return accountServiceInterface.changeAccountStatus(accountId);
+	}
+	
 }

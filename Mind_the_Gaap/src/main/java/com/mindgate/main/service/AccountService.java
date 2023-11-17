@@ -49,4 +49,16 @@ public class AccountService implements AccountServiceInterface {
 		return accountRepositoryInterface.getAccountByCustomerId(customerId);
 	}
 
+	@Override
+	public List<Account> getAccountsByAccountStatusFailed() {
+		
+		return accountRepositoryInterface.getAccountsByAccountStatusFailed();
+	}
+
+	@Override
+	public boolean changeAccountStatus(int accountId) {
+		
+		return accountRepositoryInterface.changeAccountStatus(accountId);
+	}
+
 }

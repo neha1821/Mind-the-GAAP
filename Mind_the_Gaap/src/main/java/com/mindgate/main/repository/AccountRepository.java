@@ -25,6 +25,9 @@ public class AccountRepository implements AccountRepositoryInterface {
 	private final static String SELECT_ALL_ACCOUNT = "select *  from account_details a,customer_details c where a.customer_id=c.customer_id";
 	private final static String SELECT_ONE_ACCOUNT = "select *  from account_details,customer_details where account_details.customer_id=customer_details.customer_id  and account_details.account_id=?";
 	private final static String SELECT_ALL_CUSTOMER_ACCOUNT = "select * from account_details a,customer_details c where a.customer_id=c.customer_id and c.customer_id = ?";
+	private final static String SELECT_ALLCUSTOMER_BY_STATUS = "select * from account_details a,customer_details c where a.customer_id=c.customer_id and a.account_status='FAILED'";
+	private final static String CHANGE_ACCOUNT_STATUS = "update account_details set ACCOUNT_STATUS='CREATED' where account_id=?";
+
 	
 	// select
 	// opening_date,minimum_balance,current_balance,rate_of_interest,account_id,account_type,account_status,customer_details.customer_id
@@ -82,5 +85,22 @@ public class AccountRepository implements AccountRepositoryInterface {
 	public List<Account> getAccountByCustomerId(int customerId) {
 		accountRowMapper = new AccountRowMapper();
 		return jdbcTemplate.query(SELECT_ALL_CUSTOMER_ACCOUNT, accountRowMapper, customerId);
+	}
+
+	@Override
+	public List<Account> getAccountsByAccountStatusFailed() {
+		accountRowMapper = new AccountRowMapper();
+		return jdbcTemplate.query(SELECT_ALLCUSTOMER_BY_STATUS, accountRowMapper);
+		
+	}
+
+	@Override
+	public boolean changeAccountStatus(int accountId) {
+		int rowCount = jdbcTemplate.update(CHANGE_ACCOUNT_STATUS,accountId);
+		if (rowCount > 0)
+			return true;
+		else
+			return false;
+		
 	}
 }

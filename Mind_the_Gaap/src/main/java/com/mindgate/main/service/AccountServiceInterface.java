@@ -17,5 +17,10 @@ public interface AccountServiceInterface {
 	List<Account> getAllAccount();
 	
 	List<Account> getAccountByCustomerId(int customerId);
+	
+	List<Account> getAccountsByAccountStatusFailed();
+	
+	boolean changeAccountStatus(int accountId);
+
 
 }

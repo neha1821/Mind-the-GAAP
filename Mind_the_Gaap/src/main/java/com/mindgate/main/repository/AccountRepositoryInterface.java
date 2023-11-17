@@ -12,5 +12,7 @@ public interface AccountRepositoryInterface {
 	Account getAccountByAccountId(int accountId);
 	List<Account> getAllAccount();
 	List<Account> getAccountByCustomerId(int customerId);
+	List<Account> getAccountsByAccountStatusFailed();
+	boolean changeAccountStatus(int accountId);
 
 }

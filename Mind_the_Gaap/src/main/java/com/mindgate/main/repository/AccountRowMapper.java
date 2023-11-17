@@ -32,7 +32,7 @@ public class AccountRowMapper implements RowMapper<Account>{
 		String accountStatus =rs.getString("account_status");
 		
 		
-		Account account=new Account(openingDate, minimumBalance, currentBalance, rateOfInterest, accountId, accountType, accountStatus, customerRowMapper.mapRow(rs, rowNum));
+		Account account=new Account(openingDate, minimumBalance, currentBalance, rateOfInterest, accountId, accountType, accountStatus, customer);
 		
 		return account;
 		
