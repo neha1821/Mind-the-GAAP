@@ -33,6 +33,14 @@ public class LoginService implements LoginServiceInterface {
 	@Override
 	public LoginDetails getLoginByLoginId(LoginDetails loginDetails) {
 		LoginDetails existingLoginDetails = loginRepositoryInterface.getLoginByLoginId(loginDetails);
+		
+		if(existingLoginDetails.getTypeOfMember().equals("ADMIN")&&existingLoginDetails.getPassword().equalsIgnoreCase(loginDetails.getPassword())) 
+		{return existingLoginDetails;}
+		else if(!existingLoginDetails.getPassword().equalsIgnoreCase(loginDetails.getPassword())){
+			existingLoginDetails.setLoginStatus("Fail");
+			return existingLoginDetails;
+			}
+		else {
 		if ((existingLoginDetails.getCount() <= 3 ) && existingLoginDetails.getLoginStatus().equalsIgnoreCase("success") && existingLoginDetails.getPassword().equals(loginDetails.getPassword())) {
 //			existingLoginDetails.setPassword("");
 			System.out.println("count is increasing....!!!");
@@ -41,14 +49,14 @@ public class LoginService implements LoginServiceInterface {
 			if (existingLoginDetails.getCount() < 2) {
 				existingLoginDetails.setCount(existingLoginDetails.getCount() + 1);
 				updateLogin(existingLoginDetails);
-				existingLoginDetails.setPassword("NULL");
-				existingLoginDetails.setLoginStatus("Success");
+				//existingLoginDetails.setPassword("NULL");
+				existingLoginDetails.setLoginStatus("Fail");
 				loginRepositoryInterface.updateLogin(existingLoginDetails);
 				existingLoginDetails.setTypeOfMember("");
 				return existingLoginDetails;
 			} else {
 				existingLoginDetails.setCount(existingLoginDetails.getCount() + 1);
-				existingLoginDetails.setLoginStatus("Fail");
+				existingLoginDetails.setLoginStatus("BLOCKED");
 				existingLoginDetails.setPassword("NULL");
 				existingLoginDetails.setTypeOfMember("");
 				updateLogin(existingLoginDetails);
@@ -57,6 +65,8 @@ public class LoginService implements LoginServiceInterface {
 			}
 
 		}
+	}
+
 	}
 
 	@Override
@@ -83,9 +93,8 @@ public class LoginService implements LoginServiceInterface {
 	@Override
 	public boolean getAdminLoginByAdminLoginId(LoginDetails loginDetails) {
 		LoginDetails existingLoginDetails = loginRepositoryInterface.getLoginByLoginId(loginDetails);
-		if (  existingLoginDetails.getPassword().equals(loginDetails.getPassword())) {
-			
-			
+		if (existingLoginDetails.getPassword().equals(loginDetails.getPassword())) {
+
 			return true;
 		}
 		return false;

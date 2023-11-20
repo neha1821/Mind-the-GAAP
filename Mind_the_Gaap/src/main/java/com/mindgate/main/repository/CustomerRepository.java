@@ -20,6 +20,11 @@ public class CustomerRepository implements CustomerRepositoryInterface {
 	private final static String SELECT_ALL_CUSTOMERS = "select * from customer_details";
 	private final static String SELECT_ONE_CUSTOMER = " select * from customer_details where customer_Id=?";
 	private final static String SELECT_ONE = " select * from customer_details where username=?";
+	private final static String SELECT_CUSTOMER_BY_USERNAME = " select * from customer_details where username=?";
+	private final static String SELECT_ALLCUSTOMER_BY_STATUS = "select * from customer_details  where customer_status !='ACTIVE' OR CUSTOMER_STATUS IS NULL";
+
+	private final static String CHANGE_CUSTOMER_STATUS = "update customer_details set CUSTOMER_STATUS='ACTIVE' where customer_id=?";
+
 	
 
 	@Override
@@ -78,6 +83,28 @@ public class CustomerRepository implements CustomerRepositoryInterface {
 			
 		}
 		return null;
+	}
+
+	@Override
+	public Customer getCustomerByCustomerUsername(Customer customer) {
+		CustomerRowMapper customerRowMapper = new CustomerRowMapper();
+		 return jdbcTemplate.queryForObject(SELECT_CUSTOMER_BY_USERNAME,customerRowMapper,customer.getUsername());
+	}
+
+	@Override
+	public List<Customer> getCustomerByCustomerStatus() {
+		CustomerRowMapper cusRowMapper = new CustomerRowMapper();
+		return jdbcTemplate.query(SELECT_ALLCUSTOMER_BY_STATUS, cusRowMapper);
+	}
+	
+	@Override
+	public boolean changeCustomerStatus(int customerId) {
+		int rowCount = jdbcTemplate.update(CHANGE_CUSTOMER_STATUS,customerId);
+		if (rowCount > 0)
+			return true;
+		else
+			return false;
+		
 	}
 
 }

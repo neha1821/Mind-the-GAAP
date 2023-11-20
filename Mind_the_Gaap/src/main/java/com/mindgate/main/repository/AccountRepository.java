@@ -1,5 +1,6 @@
 package com.mindgate.main.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ public class AccountRepository implements AccountRepositoryInterface {
 
 	int rowCount = 0;
 	Account account;
+	LocalDate date=LocalDate.now();
+	String accountStatus="FAILED";
 	
 	private AccountRowMapper accountRowMapper;
 
@@ -50,8 +53,8 @@ public class AccountRepository implements AccountRepositoryInterface {
 
 	@Override
 	public boolean addNewAccount(Account account) {
-		Object[] parameters = { account.getDate(), account.getMinimumBalance(), account.getCurrentBalance(),
-				account.getRateOfInterest(), account.getAccountType(), account.getAccountStatus(),
+		Object[] parameters = { date, account.getMinimumBalance(), account.getCurrentBalance(),
+				account.getRateOfInterest(), account.getAccountType(), accountStatus,
 				account.getCustomerId().getCustomerId() };
 		int rowCount = jdbcTemplate.update(INSERT_NEW_ACCOUNT, parameters);
 		if (rowCount > 0)

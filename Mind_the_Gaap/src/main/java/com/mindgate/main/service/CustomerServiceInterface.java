@@ -12,5 +12,11 @@ public interface CustomerServiceInterface {
 	public Customer getCustomerByCustomerId(int customerId);
 	public List<Customer> getAllCustomers();
 	public Customer addCustomer(Customer customer);
+	public Customer getCustomerByCustomerUsername(Customer customer);
+	public List<Customer> getCustomerByCustomerStatus();
+	boolean changeCustomerStatus(int customerId);
+
+
+
 
 }

@@ -49,4 +49,21 @@ public class CustomerService implements CustomerServiceInterface {
 		return customerRepositoryInterface.addCustomer(customer);
 	}
 
+	@Override
+	public Customer getCustomerByCustomerUsername(Customer customer) {
+		// TODO Auto-generated method stub
+		return customerRepositoryInterface.getCustomerByCustomerUsername(customer);
+	}
+
+	@Override
+	public List<Customer> getCustomerByCustomerStatus() {
+		// TODO Auto-generated method stub
+		return customerRepositoryInterface.getCustomerByCustomerStatus();
+	}
+
+	@Override
+	public boolean changeCustomerStatus(int customerId) {
+		return customerRepositoryInterface.changeCustomerStatus(customerId);
+	}
+
 }

@@ -55,4 +55,19 @@ public class CustomerController {
 		return customerServiceInterface.addCustomer(customer);
 	}
 	
+	@RequestMapping(value = "customers/username" , method = RequestMethod.POST )
+	public Customer getCustomerByCustomerUsername(@RequestBody Customer customer) {
+		return customerServiceInterface.getCustomerByCustomerUsername(customer);
+	}
+	
+	@RequestMapping(value = "customers/customerStatus" , method = RequestMethod.GET )
+	public List<Customer> getCustomerByCustomerStatus() {
+		return customerServiceInterface.getCustomerByCustomerStatus();
+	} 
+	
+	@RequestMapping(value = "customerstatus/{customerId}" , method = RequestMethod.GET)
+	public boolean changeCustomerStatus(@PathVariable int customerId) {
+		return customerServiceInterface.changeCustomerStatus(customerId);
+	}
+	
 }

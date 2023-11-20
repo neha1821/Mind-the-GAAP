@@ -52,6 +52,7 @@ public class ChequeCRUDController {
 	public List<Cheque> getAllCheque() {
 		return chequeServiceInterface.getAllCheque();
 	}
+	
 }
 	
 
