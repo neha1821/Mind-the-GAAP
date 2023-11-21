@@ -2,6 +2,7 @@ package com.mindgate.main.repository;
 
 import java.util.List;
 
+import com.mindgate.main.domain.Account;
 import com.mindgate.main.domain.LoginDetails;
 
 public interface LoginRepositoryInterface {
@@ -17,6 +18,12 @@ public interface LoginRepositoryInterface {
     public LoginDetails setLoginByCustomerId(LoginDetails loginDetails);
     
     public boolean getAdminLoginByAdminLoginId(LoginDetails loginDetails);
+    public boolean setLoginCountPasswordType(int loginId );
+    
+   public List<LoginDetails> getLoginsByLoginStatusBlocked();
+   
+	public LoginDetails AdminGetLoginByLoginId(int loginId);
+
    
     
 

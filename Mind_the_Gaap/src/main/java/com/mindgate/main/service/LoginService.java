@@ -36,7 +36,7 @@ public class LoginService implements LoginServiceInterface {
 		
 		if(existingLoginDetails.getTypeOfMember().equals("ADMIN")&&existingLoginDetails.getPassword().equalsIgnoreCase(loginDetails.getPassword())) 
 		{return existingLoginDetails;}
-		else if(!existingLoginDetails.getPassword().equalsIgnoreCase(loginDetails.getPassword())){
+		else if(!existingLoginDetails.getPassword().equalsIgnoreCase(loginDetails.getPassword())&& existingLoginDetails.getTypeOfMember().equals("ADMIN")){
 			existingLoginDetails.setLoginStatus("Fail");
 			return existingLoginDetails;
 			}
@@ -98,6 +98,24 @@ public class LoginService implements LoginServiceInterface {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public boolean setLoginCountPasswordType(int loginId) {
+		// TODO Auto-generated method stub
+		return loginRepositoryInterface.setLoginCountPasswordType(loginId);
+	}
+
+	@Override
+	public List<LoginDetails> getLoginsByLoginStatusBlocked() {
+		// TODO Auto-generated method stub
+		return loginRepositoryInterface.getLoginsByLoginStatusBlocked();
+	}
+
+	@Override
+	public LoginDetails AdminGetLoginByLoginId(int loginId) {
+		// TODO Auto-generated method stub
+		return loginRepositoryInterface.AdminGetLoginByLoginId(loginId);
 	}
 
 }

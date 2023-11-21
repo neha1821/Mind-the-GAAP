@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.mindgate.main.domain.Account;
+import com.mindgate.main.domain.Customer;
 import com.mindgate.main.domain.LoginDetails;
 
 @Repository
@@ -32,7 +34,9 @@ public class LoginRepository implements LoginRepositoryInterface {
 
 	private final static String SELECT_ONE = " select * from login_details l,customer_details c where l.customer_id=c.customer_id and l.customer_id=?";
 	
-    
+	private final static String UPDATElOGINCOUNTPASSWORD = "update login_details set password = 'PASSWORD123',count=0, type_of_member='CUSTOMER', Login_Status = 'SUCCESS' where login_id = ?";
+	private final static String SELECT_ALLLOGIN_BY_STATUS_BLOCKED = "select * from login_details a,customer_details c where a.customer_id=c.customer_id and (a.login_status='BLOCKED' OR a.login_status='INACTIVE')";
+
 
 	@Override
 	public boolean addNewLogin(LoginDetails loginDetails) {
@@ -93,7 +97,7 @@ public class LoginRepository implements LoginRepositoryInterface {
 
 	@Override
 	public LoginDetails setLoginByCustomerId(LoginDetails loginDetails){
-		Object[] parameters =  {loginDetails.getCustomerId().getCustomerId(),"PASSWORD123",0,"CUSTOMER","SUCCESS"};
+		Object[] parameters =  {loginDetails.getCustomerId().getCustomerId(),"PASSWORD123",0,"CUSTOMER","INACTIVE"};
 
         
 		int rowCount = jdbcTemplate.update(INSERT_NEW_LOGIN, parameters);
@@ -116,6 +120,34 @@ public class LoginRepository implements LoginRepositoryInterface {
 				return false;	        
 		
 	}
+
+	@Override
+	public boolean setLoginCountPasswordType(int loginId) {
+		
+		int rowCount = jdbcTemplate.update(UPDATElOGINCOUNTPASSWORD,loginId);
+		if (rowCount > 0)
+			return true;
+		else
+			return false;
+			
+		}
+
+	@Override
+	public List<LoginDetails> getLoginsByLoginStatusBlocked() {
+		 LoginRowMapper loginRowMapper = new LoginRowMapper();
+		 return jdbcTemplate.query(SELECT_ALLLOGIN_BY_STATUS_BLOCKED, loginRowMapper);
+	}
+
+	@Override
+	public LoginDetails AdminGetLoginByLoginId(int loginId) {
+		 LoginRowMapper loginRowMapper = new LoginRowMapper();
+
+		return jdbcTemplate.queryForObject(SELECT_ONE_LOGIN, loginRowMapper, loginId);
+		
+	}
+	
+
+	
 
 	
 

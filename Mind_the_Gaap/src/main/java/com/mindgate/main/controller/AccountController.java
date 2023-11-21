@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mindgate.main.domain.Account;
 import com.mindgate.main.domain.Customer;
+import com.mindgate.main.domain.LoginDetails;
 import com.mindgate.main.service.AccountServiceInterface;
+import com.mindgate.main.service.EmailSenderService;
 
 @RestController
 @RequestMapping("accountapi")
@@ -21,6 +23,8 @@ public class AccountController {
 
 	@Autowired
 	AccountServiceInterface accountServiceInterface;
+	
+	
 	
 	@RequestMapping(value = "accounts" , method = RequestMethod.POST )
 	public boolean addNewAccount(@RequestBody Account account) {

@@ -17,7 +17,14 @@ public interface LoginServiceInterface {
     public LoginDetails setLoginByCustomerId(LoginDetails loginDetails);
     
     public boolean getAdminLoginByAdminLoginId(LoginDetails loginDetails);
-	
+    public boolean setLoginCountPasswordType(int loginId );
+    
+    public List<LoginDetails> getLoginsByLoginStatusBlocked();
+    
+	public LoginDetails AdminGetLoginByLoginId(int loginId);
+
+
+
 
 
 
