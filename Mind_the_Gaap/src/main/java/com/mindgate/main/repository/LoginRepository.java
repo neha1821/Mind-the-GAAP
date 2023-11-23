@@ -37,6 +37,8 @@ public class LoginRepository implements LoginRepositoryInterface {
 	private final static String UPDATElOGINCOUNTPASSWORD = "update login_details set password = 'PASSWORD123',count=0, type_of_member='CUSTOMER', Login_Status = 'SUCCESS' where login_id = ?";
 	private final static String SELECT_ALLLOGIN_BY_STATUS_BLOCKED = "select * from login_details a,customer_details c where a.customer_id=c.customer_id and (a.login_status='BLOCKED' OR a.login_status='INACTIVE')";
 
+	private final static String SELECT_ONE_LOGIN_BY_CUSTOMER_ID = " select *  from login_details,customer_details where login_details.customer_id=customer_details.customer_id  and login_details.customer_id=?";
+
 
 	@Override
 	public boolean addNewLogin(LoginDetails loginDetails) {
@@ -144,6 +146,12 @@ public class LoginRepository implements LoginRepositoryInterface {
 
 		return jdbcTemplate.queryForObject(SELECT_ONE_LOGIN, loginRowMapper, loginId);
 		
+	}
+
+	@Override
+	public LoginDetails getLoginByCustomerId(int customerId) {
+		LoginRowMapper loginRowMapper = new LoginRowMapper();
+		return jdbcTemplate.queryForObject(SELECT_ONE_LOGIN_BY_CUSTOMER_ID,loginRowMapper, customerId);
 	}
 	
 

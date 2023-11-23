@@ -51,6 +51,18 @@ public class TransactionController {
 	public boolean deleteTransaction(@PathVariable int transactionId) {
 		return transactionServiceInterface.deleteTransaction(transactionId);
 	}
+	
+	@RequestMapping(value = "alltransactions/customer/{accountId}" , method = RequestMethod.GET)
+	public List<Transactions> getAllTransactionsByCustomer(@PathVariable int accountId){
+		System.out.println("All Customers");
+		return transactionServiceInterface.getAllTransactionByAccountId(accountId);
+	} 
+	
+	@RequestMapping(value = "alltransactions/account/history" , method = RequestMethod.POST)
+	public List<Transactions> getAllTransactionBothDebitCreditByAccountId(@RequestBody Transactions transactions){
+		System.out.println("All Customers");
+		return transactionServiceInterface.getAllTransactionBothDebitCreditByAccountId(transactions);
+	}
 
 	
 }

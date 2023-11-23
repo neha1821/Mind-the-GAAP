@@ -1,6 +1,7 @@
 package com.mindgate.main.service;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,5 +66,23 @@ public class CustomerService implements CustomerServiceInterface {
 	public boolean changeCustomerStatus(int customerId) {
 		return customerRepositoryInterface.changeCustomerStatus(customerId);
 	}
+
+	@Override
+	public Customer getFileByFileId(int customerId) {
+		// TODO Auto-generated method stub
+		return customerRepositoryInterface.getFileByFileId(customerId);
+	}
+
+	@Override
+	public boolean updateFileOnly(Customer customer) {
+		// TODO Auto-generated method stub
+		return customerRepositoryInterface.updateFileOnly(customer);
+	}
+
+//	@Override
+//	public Stream<Customer> getAllFiles() {
+//		// TODO Auto-generated method stub
+//		return customerRepositoryInterface.getAllFiles();
+//	}
 
 }

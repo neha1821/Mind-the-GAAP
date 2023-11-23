@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mindgate.main.domain.Account;
 import com.mindgate.main.domain.Transactions;
 import com.mindgate.main.repository.TransactionRepositoryInterface;
 
@@ -22,7 +23,11 @@ public class TransactionService implements TransactionServiceInterface{
 
 	@Override
 	public Transactions updateTransaction(Transactions transaction) {
-		// TODO Auto-generated method stub
+		if(transaction.getAmount()<= transaction.getFromAccount().getCurrentBalance()) {
+            transaction.getFromAccount().setCurrentBalance(transaction.getFromAccount().getCurrentBalance()-transaction.getAmount());
+            transaction.getToAccount().setCurrentBalance(transaction.getToAccount().getCurrentBalance()+transaction.getAmount());
+            return transaction;
+        }
 		return transactionRepositoryInterface.updateTransaction(transaction);
 	}
 
@@ -40,6 +45,18 @@ public class TransactionService implements TransactionServiceInterface{
 	@Override
 	public List<Transactions> getAllTransaction() {
 		return transactionRepositoryInterface.getAllTransaction();
+	}
+
+	@Override
+	public List<Transactions> getAllTransactionByAccountId(int accountId) {
+		// TODO Auto-generated method stub
+		return transactionRepositoryInterface.getAllTransactionByAccountId(accountId);
+	}
+
+	@Override
+	public List<Transactions> getAllTransactionBothDebitCreditByAccountId(Transactions transactions) {
+		// TODO Auto-generated method stub
+		return transactionRepositoryInterface.getAllTransactionBothDebitCreditByAccountId(transactions);
 	}
 
 }

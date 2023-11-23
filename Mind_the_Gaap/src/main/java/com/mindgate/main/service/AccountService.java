@@ -61,4 +61,10 @@ public class AccountService implements AccountServiceInterface {
 		return accountRepositoryInterface.changeAccountStatus(accountId);
 	}
 
+	@Override
+	public Account changeAmount(Account account) {
+		// TODO Auto-generated method stub
+		return accountRepositoryInterface.changeAmount(account);
+	}
+
 }

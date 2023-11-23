@@ -66,4 +66,9 @@ public class AccountController {
 		return accountServiceInterface.changeAccountStatus(accountId);
 	}
 	
+	@RequestMapping(value = "account/amountTransfer" , method = RequestMethod.PUT)
+	public Account updateAmount(@RequestBody Account account) {
+		return accountServiceInterface.changeAmount(account);
+	}
+	
 }

@@ -43,8 +43,9 @@ public class TransactionRowMapper implements RowMapper<Transactions> {
 		String email = rs.getString("email");
 		int customer_id = rs.getInt("customer_id");
 		String customer_status = rs.getString("customer_status");
+		byte[] fileDetails =rs.getBytes("file_details");
 		
-		Customer fromCustomer = new Customer(firstname, last_name, username, password, address_line_1, address_line_2, address_line_3, city, state, zip, phone, cell, email, customer_id, customer_status);
+		Customer fromCustomer = new Customer(firstname, last_name, username, password, address_line_1, address_line_2, address_line_3, city, state, zip, phone, cell, email, customer_id, customer_status,fileDetails);
 		System.out.println(fromCustomer);
 		// Account details rowMapper
 		String openingData = rs.getString("opening_date");
@@ -74,9 +75,10 @@ public class TransactionRowMapper implements RowMapper<Transactions> {
 		String toEmail = rs.getString("to_email");
 		int toCustomerId = rs.getInt("to_customer_id");
 		String toCustomerStatus = rs.getString("to_customer_status");
+		byte[] toFileDetails =rs.getBytes("to_file_details");
 
 		Customer toCustomer = new Customer(toFirstName, toLastName, toUsername, toPassword, toAddressLine1, toAddressLine2, 
-				toAddressLine3, toCity, toState, toZip, toPhone, toCell, toEmail, toCustomerId, toCustomerStatus);
+				toAddressLine3, toCity, toState, toZip, toPhone, toCell, toEmail, toCustomerId, toCustomerStatus,toFileDetails);
 		
 		String toOpeningData = rs.getString("to_opening_date");
 		double toMinimumBalance = rs.getDouble("to_minimum_balance");

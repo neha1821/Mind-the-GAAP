@@ -21,6 +21,7 @@ public interface AccountServiceInterface {
 	List<Account> getAccountsByAccountStatusFailed();
 	
 	boolean changeAccountStatus(int accountId);
+	Account changeAmount(Account account);
 
 
 }

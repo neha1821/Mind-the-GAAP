@@ -1,6 +1,7 @@
 package com.mindgate.main.service;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import com.mindgate.main.domain.Customer;
 
@@ -15,6 +16,12 @@ public interface CustomerServiceInterface {
 	public Customer getCustomerByCustomerUsername(Customer customer);
 	public List<Customer> getCustomerByCustomerStatus();
 	boolean changeCustomerStatus(int customerId);
+	
+	 Customer getFileByFileId(int customerId);
+	 
+	 public boolean updateFileOnly(Customer customer);
+
+//		Stream<Customer> getAllFiles();
 
 
 

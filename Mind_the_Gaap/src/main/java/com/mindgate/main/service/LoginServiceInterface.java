@@ -22,6 +22,9 @@ public interface LoginServiceInterface {
     public List<LoginDetails> getLoginsByLoginStatusBlocked();
     
 	public LoginDetails AdminGetLoginByLoginId(int loginId);
+	
+	public LoginDetails getLoginByCustomerId(int customerId);
+
 
 
 

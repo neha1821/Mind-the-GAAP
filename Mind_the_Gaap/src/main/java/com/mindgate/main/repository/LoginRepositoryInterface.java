@@ -23,6 +23,8 @@ public interface LoginRepositoryInterface {
    public List<LoginDetails> getLoginsByLoginStatusBlocked();
    
 	public LoginDetails AdminGetLoginByLoginId(int loginId);
+	
+	public LoginDetails getLoginByCustomerId(int customerId);
 
    
     

@@ -2,6 +2,7 @@ package com.mindgate.main.repository;
 
 import java.util.List;
 
+import com.mindgate.main.domain.Account;
 import com.mindgate.main.domain.Transactions;
 
 public interface TransactionRepositoryInterface {
@@ -15,5 +16,11 @@ public interface TransactionRepositoryInterface {
 	public Transactions getTransactionByTransactionId(int transactionId);
 
 	public List<Transactions> getAllTransaction();
+	
+	public List<Transactions> getAllTransactionByAccountId(int customerId);
+	
+	public List<Transactions> getAllTransactionBothDebitCreditByAccountId( Transactions transactions);
+	
+	
 
 }

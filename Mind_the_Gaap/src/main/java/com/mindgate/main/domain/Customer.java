@@ -1,5 +1,7 @@
 package com.mindgate.main.domain;
 
+import java.util.Arrays;
+
 public class Customer {
 
 	private String firstName;
@@ -17,13 +19,15 @@ public class Customer {
 	private String email;
 	private int customerId;
 	private String customerStatus;
+	private byte[] fileDetails;
 
 	public Customer() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Customer(String firstName, String lastName, String username, String password, String addressLine1,
 			String addressLine2, String addressLine3, String city, String state, int zip, long phone, long cell,
-			String email, int customerId, String customerStatus) {
+			String email, int customerId, String customerStatus, byte[] fileDetails) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -40,6 +44,7 @@ public class Customer {
 		this.email = email;
 		this.customerId = customerId;
 		this.customerStatus = customerStatus;
+		this.fileDetails = fileDetails;
 	}
 
 	public String getFirstName() {
@@ -162,13 +167,24 @@ public class Customer {
 		this.customerStatus = customerStatus;
 	}
 
+	public byte[] getFileDetails() {
+		return fileDetails;
+	}
+
+	public void setFileDetails(byte[] fileDetails) {
+		this.fileDetails = fileDetails;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password="
 				+ password + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + ", addressLine3="
 				+ addressLine3 + ", city=" + city + ", state=" + state + ", zip=" + zip + ", phone=" + phone + ", cell="
-				+ cell + ", email=" + email + ", customerId=" + customerId + ", customerStatus=" + customerStatus + "]";
+				+ cell + ", email=" + email + ", customerId=" + customerId + ", customerStatus=" + customerStatus
+				+ ", fileDetails=" + Arrays.toString(fileDetails) + "]";
 	}
+	
+	
 	
 	
 	

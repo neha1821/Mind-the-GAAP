@@ -99,6 +99,11 @@ public class LoginController {
 			return loginServiceInterface.AdminGetLoginByLoginId(loginId);
 		}
 		
+		@RequestMapping(value = "logindetails/customer/{customerId}", method = RequestMethod.GET)
+		public LoginDetails getLoginByCustomerId(@PathVariable int customerId) {
+			return loginServiceInterface.getLoginByCustomerId(customerId);
+		}
+		
 
 		
 }

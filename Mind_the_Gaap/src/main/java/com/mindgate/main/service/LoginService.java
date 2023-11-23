@@ -46,7 +46,16 @@ public class LoginService implements LoginServiceInterface {
 			System.out.println("count is increasing....!!!");
 			return existingLoginDetails;
 		} else {
-			if (existingLoginDetails.getCount() < 2) {
+			if (existingLoginDetails.getCount() < 2 && existingLoginDetails.getPassword().equals(loginDetails.getPassword()) ) {
+				
+				updateLogin(existingLoginDetails);
+				//existingLoginDetails.setPassword("NULL");
+				existingLoginDetails.setLoginStatus("Fail");
+				loginRepositoryInterface.updateLogin(existingLoginDetails);
+				existingLoginDetails.setTypeOfMember("");
+				return existingLoginDetails;
+			}
+			else if (existingLoginDetails.getCount() < 2 ) {
 				existingLoginDetails.setCount(existingLoginDetails.getCount() + 1);
 				updateLogin(existingLoginDetails);
 				//existingLoginDetails.setPassword("NULL");
@@ -116,6 +125,12 @@ public class LoginService implements LoginServiceInterface {
 	public LoginDetails AdminGetLoginByLoginId(int loginId) {
 		// TODO Auto-generated method stub
 		return loginRepositoryInterface.AdminGetLoginByLoginId(loginId);
+	}
+
+	@Override
+	public LoginDetails getLoginByCustomerId(int customerId) {
+		// TODO Auto-generated method stub
+		return loginRepositoryInterface.getLoginByCustomerId(customerId);
 	}
 
 }

@@ -27,8 +27,10 @@ public Customer mapRow(ResultSet rs, int rowNum) throws SQLException{
 		String email = rs.getString("email");
 		int customerId = rs.getInt("customer_id");
 		String customerStatus = rs.getString("customer_status");
+		 byte[] fileDetails =rs.getBytes("file_details");
 		
-		Customer customer = new Customer(firstName, lastName, username, password, addressLine1, addressLine2, addressLine3, city, state, zip, phone, cell, email, customerId, customerStatus);
+		
+		Customer customer = new Customer(firstName, lastName, username, password, addressLine1, addressLine2, addressLine3, city, state, zip, phone, cell, email, customerId, customerStatus,fileDetails);
 		return customer;
 	}
 }

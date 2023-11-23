@@ -31,6 +31,8 @@ public class AccountRepository implements AccountRepositoryInterface {
 	private final static String SELECT_ALLCUSTOMER_BY_STATUS = "select * from account_details a,customer_details c where a.customer_id=c.customer_id and a.account_status='FAILED'";
 	private final static String CHANGE_ACCOUNT_STATUS = "update account_details set ACCOUNT_STATUS='CREATED' where account_id=?";
 
+	private final static String CHANGE_AMOUNT_ = "update account_details set  CURRENT_BALANCE=?  where account_id=?";
+
 	
 	// select
 	// opening_date,minimum_balance,current_balance,rate_of_interest,account_id,account_type,account_status,customer_details.customer_id
@@ -105,5 +107,17 @@ public class AccountRepository implements AccountRepositoryInterface {
 		else
 			return false;
 		
+	}
+
+	@Override
+	public Account changeAmount(Account account) {
+		Object[] parameters = {  account.getCurrentBalance(),
+				account.getAccountId() };
+		System.out.println(account);
+		int rowCount = jdbcTemplate.update(CHANGE_AMOUNT_, parameters);
+		if (rowCount > 0) {
+			return getAccountByAccountId(account.getAccountId());
+		}
+		return null;
 	}
 }
