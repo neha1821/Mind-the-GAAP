@@ -26,6 +26,8 @@ public class AccountController {
 	
 	
 	
+	
+	
 	@RequestMapping(value = "accounts" , method = RequestMethod.POST )
 	public boolean addNewAccount(@RequestBody Account account) {
 		return accountServiceInterface.addNewAccount(account);

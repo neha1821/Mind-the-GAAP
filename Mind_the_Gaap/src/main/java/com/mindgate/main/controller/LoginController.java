@@ -28,7 +28,7 @@ public class LoginController {
 	@Autowired
     private EmailSenderService emailSenderService;
     
-    @RequestMapping(value = "send",method = RequestMethod.POST)
+    @RequestMapping(value = "send/login",method = RequestMethod.POST)
     public boolean sendMail(@RequestBody LoginDetails login) {
     	int loginId=login.getLoginId();
     	String loginIdNew=Integer.toString(loginId);

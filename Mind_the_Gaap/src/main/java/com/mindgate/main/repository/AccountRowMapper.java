@@ -30,9 +30,10 @@ public class AccountRowMapper implements RowMapper<Account>{
 		int accountId =rs.getInt("account_id");
 		String accountType =rs.getString("account_type");
 		String accountStatus =rs.getString("account_status");
+		double overDraftBalance=rs.getDouble("over_draft_balance");
 		
 		
-		Account account=new Account(openingDate, minimumBalance, currentBalance, rateOfInterest, accountId, accountType, accountStatus, customer);
+		Account account=new Account(openingDate, minimumBalance, currentBalance, rateOfInterest, accountId, accountType, accountStatus, overDraftBalance,customer);
 		
 		return account;
 		

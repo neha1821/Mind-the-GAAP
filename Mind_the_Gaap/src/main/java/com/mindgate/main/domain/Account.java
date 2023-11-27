@@ -3,20 +3,23 @@ package com.mindgate.main.domain;
 public class Account {
 
 	private String date;
+
 	private double minimumBalance;
 	private double currentBalance;
 	private double rateOfInterest;
 	private int accountId;
 	private String accountType;
 	private String accountStatus;
+	private double overDraftBalance;
 	private Customer customerId;
 
 	public Account() {
-		System.out.println("Account ...!!!");
+		// TODO Auto-generated constructor stub
 	}
 
 	public Account(String date, double minimumBalance, double currentBalance, double rateOfInterest, int accountId,
-			String accountType, String accountStatus, Customer customerId) {
+			String accountType, String accountStatus, double overDraftBalance, Customer customerId) {
+		super();
 		this.date = date;
 		this.minimumBalance = minimumBalance;
 		this.currentBalance = currentBalance;
@@ -24,6 +27,7 @@ public class Account {
 		this.accountId = accountId;
 		this.accountType = accountType;
 		this.accountStatus = accountStatus;
+		this.overDraftBalance = overDraftBalance;
 		this.customerId = customerId;
 	}
 
@@ -83,6 +87,14 @@ public class Account {
 		this.accountStatus = accountStatus;
 	}
 
+	public double getOverDraftBalance() {
+		return overDraftBalance;
+	}
+
+	public void setOverDraftBalance(double overDraftBalance) {
+		this.overDraftBalance = overDraftBalance;
+	}
+
 	public Customer getCustomerId() {
 		return customerId;
 	}
@@ -95,7 +107,11 @@ public class Account {
 	public String toString() {
 		return "Account [date=" + date + ", minimumBalance=" + minimumBalance + ", currentBalance=" + currentBalance
 				+ ", rateOfInterest=" + rateOfInterest + ", accountId=" + accountId + ", accountType=" + accountType
-				+ ", accountStatus=" + accountStatus + ", customerId=" + customerId + "]";
-	}
+				+ ", accountStatus=" + accountStatus + ", overDraftBalance=" + overDraftBalance + ", customerId="
+				+ customerId + "]";
+	} 
+	
+	
+	
 
 }

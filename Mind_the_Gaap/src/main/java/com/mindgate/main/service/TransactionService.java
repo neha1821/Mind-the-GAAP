@@ -10,8 +10,8 @@ import com.mindgate.main.domain.Transactions;
 import com.mindgate.main.repository.TransactionRepositoryInterface;
 
 @Service
-public class TransactionService implements TransactionServiceInterface{
-	
+public class TransactionService implements TransactionServiceInterface {
+
 	@Autowired
 	TransactionRepositoryInterface transactionRepositoryInterface;
 
@@ -23,11 +23,141 @@ public class TransactionService implements TransactionServiceInterface{
 
 	@Override
 	public Transactions updateTransaction(Transactions transaction) {
-		if(transaction.getAmount()<= transaction.getFromAccount().getCurrentBalance()) {
-            transaction.getFromAccount().setCurrentBalance(transaction.getFromAccount().getCurrentBalance()-transaction.getAmount());
-            transaction.getToAccount().setCurrentBalance(transaction.getToAccount().getCurrentBalance()+transaction.getAmount());
-            return transaction;
-        }
+
+		if (transaction.getFromAccount().getAccountType().equalsIgnoreCase("SAVING_ACCOUNT")) {
+
+			if (transaction.getAmount() <= transaction.getFromAccount().getCurrentBalance()) {
+
+				transaction.getFromAccount()
+						.setCurrentBalance(transaction.getFromAccount().getCurrentBalance() - transaction.getAmount());
+
+				transaction.getToAccount()
+						.setCurrentBalance(transaction.getToAccount().getCurrentBalance() + transaction.getAmount());
+
+				return transaction;
+
+			}
+
+		}
+
+		else if (transaction.getFromAccount().getAccountType().equalsIgnoreCase("CURRENT_ACCOUNT")) {
+
+			if (transaction.getAmount() <= transaction.getFromAccount().getCurrentBalance()
+					+ transaction.getFromAccount().getOverDraftBalance()) {
+
+				if (transaction.getAmount() <= transaction.getFromAccount().getCurrentBalance()) {
+
+					transaction.getFromAccount().setCurrentBalance(
+							transaction.getFromAccount().getCurrentBalance() - transaction.getAmount());
+
+					transaction.getToAccount().setCurrentBalance(
+							transaction.getToAccount().getCurrentBalance() + transaction.getAmount());
+
+					return transaction;
+
+				}
+
+				else if (transaction.getAmount() > transaction.getFromAccount().getCurrentBalance()
+						&& transaction.getFromAccount().getCurrentBalance() > 0) {
+
+					transaction.getFromAccount().setCurrentBalance(
+							transaction.getFromAccount().getCurrentBalance() - transaction.getAmount());
+
+					if (transaction.getFromAccount().getCurrentBalance() < 0) {
+
+						transaction.getFromAccount()
+								.setOverDraftBalance(transaction.getFromAccount().getOverDraftBalance()
+										+ transaction.getFromAccount().getCurrentBalance());
+
+						transaction.getFromAccount().setCurrentBalance(0);
+
+						if (transaction.getAmount() > 0 && transaction.getToAccount().getOverDraftBalance() != 10000) {
+
+							transaction.getToAccount().setOverDraftBalance(
+									transaction.getToAccount().getOverDraftBalance() + transaction.getAmount());
+
+							if (transaction.getToAccount().getOverDraftBalance() > 10000) {
+
+								double temp = transaction.getToAccount().getOverDraftBalance() - 10000;
+
+								transaction.getToAccount()
+										.setCurrentBalance(transaction.getToAccount().getCurrentBalance() + temp);
+
+								transaction.getToAccount()
+										.setOverDraftBalance(transaction.getToAccount().getOverDraftBalance() - temp);
+
+								return transaction;
+
+							}
+
+						}
+
+						else {
+
+							transaction.getToAccount().setCurrentBalance(
+									transaction.getToAccount().getCurrentBalance() + transaction.getAmount());
+
+							return transaction;
+
+						}
+
+					}
+
+				}
+
+				else if (transaction.getFromAccount().getCurrentBalance() == 0
+						&& transaction.getAmount() <= transaction.getFromAccount().getOverDraftBalance()) {
+
+					transaction.getFromAccount().setOverDraftBalance(
+							transaction.getFromAccount().getOverDraftBalance() - transaction.getAmount());
+
+					if (transaction.getAmount() > 0 && transaction.getToAccount().getOverDraftBalance() != 10000) {
+
+						transaction.getToAccount().setOverDraftBalance(
+								transaction.getToAccount().getOverDraftBalance() + transaction.getAmount());
+
+						if (transaction.getToAccount().getOverDraftBalance() > 10000) {
+
+							double temp = transaction.getToAccount().getOverDraftBalance() - 10000;
+
+							transaction.getToAccount()
+									.setCurrentBalance(transaction.getToAccount().getCurrentBalance() + temp);
+
+							transaction.getToAccount()
+									.setOverDraftBalance(transaction.getToAccount().getOverDraftBalance() - temp);
+
+							return transaction;
+
+						}
+
+					}
+
+					else {
+
+						transaction.getToAccount().setCurrentBalance(
+								transaction.getToAccount().getCurrentBalance() + transaction.getAmount());
+
+						return transaction;
+
+					}
+
+//						return transaction;
+
+				}
+
+				// transaction.getFromAccount().setCurrentBalance(transaction.getFromAccount().getCurrentBalance()-transaction.getAmount());
+
+				// transaction.getToAccount().setCurrentBalance(transaction.getToAccount().getCurrentBalance()+transaction.getAmount());
+
+			}
+
+		}
+
+//		if(transaction.getAmount()<= transaction.getFromAccount().getCurrentBalance()) {
+//            transaction.getFromAccount().setCurrentBalance(transaction.getFromAccount().getCurrentBalance()-transaction.getAmount());
+//            transaction.getToAccount().setCurrentBalance(transaction.getToAccount().getCurrentBalance()+transaction.getAmount());
+//            return transaction;
+		// }
 		return transactionRepositoryInterface.updateTransaction(transaction);
 	}
 

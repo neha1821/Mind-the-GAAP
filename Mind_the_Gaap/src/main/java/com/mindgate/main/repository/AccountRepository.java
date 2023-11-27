@@ -1,5 +1,6 @@
 package com.mindgate.main.repository;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,12 +19,19 @@ public class AccountRepository implements AccountRepositoryInterface {
 	int rowCount = 0;
 	Account account;
 	LocalDate date=LocalDate.now();
+	
 	String accountStatus="FAILED";
+	double overdraftBalanceCurrent=10000;
+	 double overdraftBalanceSaving=0;
+	
+	
+	
+	
 	
 	private AccountRowMapper accountRowMapper;
 
-	private final static String INSERT_NEW_ACCOUNT = "insert into account_details values(?,?,?,?,account_id_sequence.nextVal,?,?,?)";
-	private final static String UPDATE_EXISTING_ACCOUNT = "update account_details set OPENING_DATE=? ,MINIMUM_BALANCE=?,CURRENT_BALANCE=?,RATE_OF_INTEREST=?,ACCOUNT_TYPE=?,ACCOUNT_STATUS=? where account_id=?";
+	private final static String INSERT_NEW_ACCOUNT = "insert into account_details(ACCOUNT_ID,OPENING_DATE,MINIMUM_BALANCE,CURRENT_BALANCE,RATE_OF_INTEREST,ACCOUNT_TYPE,ACCOUNT_STATUS,OVER_DRAFT_BALANCE,CUSTOMER_ID) values(account_id_sequence.nextVal,?,?,?,?,?,?,?,?)";
+	private final static String UPDATE_EXISTING_ACCOUNT = "update account_details set OPENING_DATE=? ,MINIMUM_BALANCE=?,CURRENT_BALANCE=?,RATE_OF_INTEREST=?,ACCOUNT_TYPE=?,ACCOUNT_STATUS=?,OVER_DRAFT_BALANCE=? where account_id=?";
 	private final static String DELETE_EXISTING_ACCOUNT = "delete from account_details  where account_Id=?";
 	private final static String SELECT_ALL_ACCOUNT = "select *  from account_details a,customer_details c where a.customer_id=c.customer_id";
 	private final static String SELECT_ONE_ACCOUNT = "select *  from account_details,customer_details where account_details.customer_id=customer_details.customer_id  and account_details.account_id=?";
@@ -31,8 +39,27 @@ public class AccountRepository implements AccountRepositoryInterface {
 	private final static String SELECT_ALLCUSTOMER_BY_STATUS = "select * from account_details a,customer_details c where a.customer_id=c.customer_id and a.account_status='FAILED'";
 	private final static String CHANGE_ACCOUNT_STATUS = "update account_details set ACCOUNT_STATUS='CREATED' where account_id=?";
 
-	private final static String CHANGE_AMOUNT_ = "update account_details set  CURRENT_BALANCE=?  where account_id=?";
+	private final static String CHANGE_AMOUNT_ = "update account_details set  CURRENT_BALANCE=?,OVER_DRAFT_BALANCE=?    where account_id=?";
 
+	
+	@Override
+	public boolean addNewAccount(Account account) {
+		System.out.println(account);
+		System.out.println("hii");
+		
+		
+
+		Object[] parameters = { date, account.getMinimumBalance(), account.getCurrentBalance(),
+				account.getRateOfInterest(), account.getAccountType(), accountStatus,account.getOverDraftBalance(),account.getCustomerId().getCustomerId() };
+
+		int rowCount = jdbcTemplate.update(INSERT_NEW_ACCOUNT, parameters);
+		
+		System.out.println(account);
+		if (rowCount > 0)
+			return true;
+		else
+			return false;
+	}
 	
 	// select
 	// opening_date,minimum_balance,current_balance,rate_of_interest,account_id,account_type,account_status,customer_details.customer_id
@@ -43,9 +70,9 @@ public class AccountRepository implements AccountRepositoryInterface {
 	@Override
 	public Account updateAccount(Account account) {
 		Object[] parameters = { account.getDate(), account.getMinimumBalance(), account.getCurrentBalance(),
-				account.getRateOfInterest(), account.getAccountType(), account.getAccountStatus(),
-				account.getAccountId() };
-		System.out.println(account);
+				account.getRateOfInterest(), account.getAccountType(), account.getAccountStatus(),account.getOverDraftBalance()
+				,account.getAccountId() };
+		System.out.println(account.getDate().substring(0, 8));
 		int rowCount = jdbcTemplate.update(UPDATE_EXISTING_ACCOUNT, parameters);
 		if (rowCount > 0) {
 			return getAccountByAccountId(account.getAccountId());
@@ -53,17 +80,7 @@ public class AccountRepository implements AccountRepositoryInterface {
 		return null;
 	}
 
-	@Override
-	public boolean addNewAccount(Account account) {
-		Object[] parameters = { date, account.getMinimumBalance(), account.getCurrentBalance(),
-				account.getRateOfInterest(), account.getAccountType(), accountStatus,
-				account.getCustomerId().getCustomerId() };
-		int rowCount = jdbcTemplate.update(INSERT_NEW_ACCOUNT, parameters);
-		if (rowCount > 0)
-			return true;
-		else
-			return false;
-	}
+	
 
 	@Override
 	public boolean deleteAccount(int accountId) {
@@ -111,7 +128,7 @@ public class AccountRepository implements AccountRepositoryInterface {
 
 	@Override
 	public Account changeAmount(Account account) {
-		Object[] parameters = {  account.getCurrentBalance(),
+		Object[] parameters = {  account.getCurrentBalance(),account.getOverDraftBalance(),
 				account.getAccountId() };
 		System.out.println(account);
 		int rowCount = jdbcTemplate.update(CHANGE_AMOUNT_, parameters);

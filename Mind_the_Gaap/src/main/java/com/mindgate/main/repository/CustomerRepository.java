@@ -26,13 +26,13 @@ public class CustomerRepository implements CustomerRepositoryInterface {
 
 	private final static String CHANGE_CUSTOMER_STATUS = "update customer_details set CUSTOMER_STATUS='ACTIVE' where customer_id=?";
 
-	private final static String upload_file_only = "update customer_details set file_details=? where customer_id=?";
+	private final static String upload_file_only = "update customer_details set file_details=? where username=?";
 	
 	
 	
 	@Override
 	public boolean updateFileOnly(Customer customer) {
-		Object[] parameters= {customer.getFileDetails(),customer.getCustomerId()};
+		Object[] parameters= {customer.getFileDetails(),customer.getUsername()};
 		int rowCount = jdbcTemplate.update(upload_file_only, parameters);
 		if (rowCount > 0)
 			return true;

@@ -18,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mindgate.main.domain.Customer;
 import com.mindgate.main.service.CustomerServiceInterface;
 
+import io.micrometer.common.util.StringUtils;
+
 @RestController
 @RequestMapping("customerapi")
 @CrossOrigin("*")
@@ -29,13 +31,16 @@ public class CustomerController {
 	
 	
 	
-	@RequestMapping(value = "upload/{customerId}", method = RequestMethod.PUT)
-	public boolean uploadFile(@PathVariable int customerId ,@RequestParam("file") MultipartFile file) {
+	@RequestMapping(value = "upload/{username}", method = RequestMethod.PUT)
+	public boolean uploadFile(@PathVariable String username ,@RequestParam("file") MultipartFile file) {
 		Customer customer = new Customer();
-		customer.setCustomerId(customerId);
-		try {
-			customer.setFileDetails(file.getBytes());
-		} catch (IOException e) {
+	
+		customer.setUsername(username);
+		try 
+		{
+		  customer.setFileDetails(file.getBytes());
+		} catch (IOException e)
+		{
 			System.out.println("Exception while file upload");
 		}
 		return customerServiceInterface.updateFileOnly(customer);

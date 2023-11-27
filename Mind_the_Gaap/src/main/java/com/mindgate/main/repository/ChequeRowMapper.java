@@ -42,9 +42,10 @@ public class ChequeRowMapper implements RowMapper<Cheque> {
 		int accountId = rs.getInt("account_id");
 		String accountType = rs.getString("account_type");
 		String accountStatus = rs.getString("account_status");
+		double overDraftBalance=rs.getDouble("over_draft_balance");
 
 		Account fromAccount = new Account(openingDate, minimumBalance, currentBalance, rateOfInterest, accountId,
-				accountType, accountStatus, fromCustomer);
+				accountType, accountStatus,overDraftBalance, fromCustomer);
 		
 		
 		String toFirstName = rs.getString("to_first_name");
@@ -76,8 +77,9 @@ public class ChequeRowMapper implements RowMapper<Cheque> {
 		int toAccountId = rs.getInt("to_account_id");
 		String toAccountType = rs.getString("to_account_type");
 		String toAccountStatus = rs.getString("to_account_status");
+		double toOverDraftBalance=rs.getDouble("to_over_draft_balance");
 
-		Account toAccount =new Account(toOpeningData, toMinimumBalance, toCurrentBalance, toRateOfInterest, toAccountId, toAccountType, toAccountStatus, toCustomer);
+		Account toAccount =new Account(toOpeningData, toMinimumBalance, toCurrentBalance, toRateOfInterest, toAccountId, toAccountType, toAccountStatus,toOverDraftBalance, toCustomer);
 
 
 		int chequeId = rs.getInt("cheque_id");

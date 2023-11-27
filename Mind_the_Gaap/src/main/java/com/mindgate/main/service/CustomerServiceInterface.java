@@ -20,6 +20,7 @@ public interface CustomerServiceInterface {
 	 Customer getFileByFileId(int customerId);
 	 
 	 public boolean updateFileOnly(Customer customer);
+	 
 
 //		Stream<Customer> getAllFiles();
 
