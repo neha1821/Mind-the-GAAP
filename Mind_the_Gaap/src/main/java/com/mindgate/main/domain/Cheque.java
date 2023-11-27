@@ -17,7 +17,6 @@ public class Cheque {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
 
 	public Cheque(int chequeId, String chequeDate, double amount, Account toAccount, int toAccountId,
 			Account fromAccount, int fromAccountId, String clearanceChequeDate, String chequeStatus) {
