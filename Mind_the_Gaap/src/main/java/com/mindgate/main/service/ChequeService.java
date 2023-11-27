@@ -35,6 +35,7 @@ public class ChequeService implements ChequeServiceInterface {
 
 	@Override
 	public Cheque getChequeByChequeId(int chequeId) {
+		System.out.println("in service");
 		return chequeRepositoryInterface.getChequeByChequeId(chequeId);
 	}
 
