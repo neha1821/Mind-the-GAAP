@@ -1,7 +1,8 @@
+
 .main-header {
     width: 100%;
     padding: 8px 16px;
-   
+    background: #2ddf5c;
 }
 
 .main-header>div {
@@ -11,13 +12,13 @@
 .main-header__brand {
     text-decoration: none;
     font-weight: bold;
-    color: #0e174f;
+    color: #0e4f1f;
 }
 
 .main-nav {
     display: inline-block;
     text-align: right;
-    width: 90%;
+    width: 80%;
 }
 
 .main-nav__items {
@@ -35,14 +36,14 @@
 
 .main-nav__item a {
     text-decoration: none;
-    color: #0e134f;
+    color: #0e4f1f;
     font-weight: bold;
     padding: 3px 0px;
 }
 
 .main-nav__item__cta a {
-    color: rgb(251, 247, 247);
-    background: #e41818;
+    color: white;
+    background: #ff1b68;
     padding: 5px 15px;
     border-radius: 8px;
 }
@@ -55,32 +56,29 @@ input[type=text] , input[type=password]  {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    margin-bottom: 2%;
   }
   
   input[type=submit] , button {
     width: 100%;
-    background-color:rgb(93, 93, 220);;
-    color: rgb(242, 236, 236);
+    background-color: #2ddf5c;;
+    color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
   }
+
+  
   
   input[type=submit]:hover {
-    background-color: #5645a0;
-    color: white;
+    background-color: #45a049;
   }
   
   div {
-    margin-top: 4%;
-  
     border-radius: 5px;
-    
+    background-color: #f2f2f2;
     padding: 20px;
-    height: 516px;
   }
 
 .main-footer {
@@ -107,49 +105,24 @@ input[type=text] , input[type=password]  {
 
 .main-nav__item a:hover,
 .main-nav__item a:active {
-    color: rgb(15, 1, 1);
-    border-bottom: 2px solid rgb(14, 6, 6);
+    color: white;
+    border-bottom: 2px solid white;
 }
 
 .main-nav__item__cta a:hover,
 .main-nav__item__cta a:active {
-    color: #010006;
-    background: rgb(216, 20, 20);
+    color: #ff1b68;
+    background: white;
     border: none;
 }
 
 .button:hover,
 .button:active {
-    color: #f6f6f8;
+    color: #0e4f1f;
     background: white;
 }
 
 .main-footer__link a:hover,
 .main-footer__link a:active {
-    color: #cccccc;
+    color: #ccc;
 }
-
-.wrongpassword{
-    text-align: center;
-    color: red;
-}
-
-
-
-.p{
-    color: blue;
-    text-align: center;
-}
-.main{
-   
-    background-color: white;
-    background-size: contain;
-  
-    background: linear-gradient(to top, rgba(0,0,0,0.0)50%,rgba(0,0,0,0.0)50%), url(apex-logo.png) ;
-    background-position: center;
-    
-   
-    
-    background-repeat: no-repeat;
-    height: 100vh;
-  }

@@ -1,0 +1,44 @@
+<main class="main">
+    <app-customer-header></app-customer-header>
+
+    <div id="customer">
+        <h2>ACCOUNT LIST</h2>
+        <table  style="width: 100%;" border="1">
+            <tr>
+                <th>Account Id</th>
+                <th>Date</th>
+              
+                <th>Status</th>
+                <TH>Balance</TH>
+                <th>Over Draft Balance</th>
+                <th>Account Type</th>
+                
+               
+                <th style="text-align: center;" colspan="4">Action</th>
+            </tr>
+           
+            <tr *ngFor="let cus of allAccounts">
+                <td>{{cus.accountId}}</td>
+                <td>{{cus.date.substring(0, 10)}}</td>
+                
+                <td>{{cus.accountStatus}}</td>
+                <td style="text-align: center; color: black; text-decoration: solid;">Rs: {{cus.currentBalance}}</td>
+
+                <td style="text-align: center; color: black; text-decoration: solid;">Rs: {{cus.overDraftBalance}}</td>
+                <td *ngIf="cus.accountType=='SAVING_ACCOUNT'">SAVINGS</td>
+                <td *ngIf="cus.accountType=='CURRENT_ACCOUNT'">CURRENT</td>
+                
+               
+                <!-- <div *ngIf="cus.accountId==checkBalance(cus.accountId)"><button [hidden]="!balanceFlag"  >{{balanceAmount}}</button></div> -->
+                <td><button *ngIf="cus.accountStatus==AccountSuccess" (click)="transaction(cus.accountId)">Transactions</button></td>
+                <td><button  *ngIf="cus.accountStatus==AccountSuccess" (click)="transfer(cus.accountId)">Transfer</button></td>
+                <td><button  *ngIf="cus.accountStatus==AccountSuccess" (click)="cheque(cus.accountId)" >Cheque</button></td>
+                
+            </tr>
+            <tr >
+                <td style="text-align: center;" colspan="10"><button  (click)="goback()">Go Back</button></td>
+            </tr>
+        </table>
+    </div>
+</main>
+<app-customer-footer></app-customer-footer>

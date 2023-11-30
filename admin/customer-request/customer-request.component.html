@@ -1,0 +1,27 @@
+<main class="main">
+    <app-admin-header></app-admin-header>
+
+    <div id="customer">
+        <h2>CUSTOMER REQUEST LIST</h2>
+        <table style="width: 100%;" border="1">
+            <tr>
+                <th>Customer Id</th>
+                <th>UserName</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th style="text-align: center;" colspan="3">Action</th>
+            </tr>
+            <tr *ngFor="let cus of newCustomers">
+                <td>{{cus.customerId}}</td>
+                <td>{{cus.username}}</td>
+                <td>{{cus.email}}</td>
+                <td>{{cus.customerStatus}}</td>
+
+                <td><button (click)="Customerdetails(cus.customerId)">Details</button></td>
+                <td><button><a style="color: white; text-decoration: none;" href="http://localhost:8082/customerapi/files/{{cus.customerId}}">Document Verify</a></button></td>
+                <td><button (click)="changeCustomerStatus(cus.customerId)">Approve</button></td>
+            </tr>
+        </table>
+    </div>
+</main>
+<app-admin-footer></app-admin-footer>

@@ -1,0 +1,102 @@
+
+<main class="main">
+    <app-customer-header></app-customer-header>
+
+
+    <div [hidden]="navButton">
+        <h2 [hidden]="!chequeFlag"> Cheque Issue</h2>
+        <h2 [hidden]="chequeFlag"> Cheque Claim</h2>
+        
+
+        
+        <table id="customer">
+            <tr>
+                <td><button (click)="changeIssueFlag()">Issue Cheque</button></td>
+                <td class="selectOption"><button (click)="changeClaimFlag()">
+                    
+                    <select [(ngModel)]="typeChanges" >
+                    <option value="UNCLEARED" >UNCLEARED</option>
+                    
+                    <option value="BOUNCE">BOUNCED</option>
+                    <option value="CLEARED">CLEARED</option>
+                    <option value="ACTIVE">ACTIVE</option>
+                    <option value="FAILED">FAILED</option>
+                  </select>
+                 
+                </button>
+            </td>
+            </tr>
+        </table>
+    </div>
+    <div [hidden]="!chequeFlag" >
+        <div [hidden]="result">
+        <form (ngSubmit)="CreateCheque()">
+
+            <label for="To Account">From Account</label>
+            <input type="text" id="firstName" name="firstName" [(ngModel)]="cheque.fromAccount.accountId"  readonly><br>
+
+            <label *ngIf="!flag" for="amount">Amount :</label>
+            <input *ngIf="!flag" type="text" id="amount" name="amount" [(ngModel)]="chequeAmount" required>
+            <br>
+
+            <label  for="toAccount"> Cheque Receiver Account id:</label>
+            <input class="toaccount" type="text" id="toAccount" name="toAccount" [(ngModel)]="cheque.toAccount.accountId" required>
+            <p style="text-align: center; color: red;" [hidden]="!alert">Sender Account does Not Exists - Try Again</p>
+
+            <button *ngIf="!flag" (click)="checkToaccount()">Check Account Present</button><br>
+ 
+           
+            <br>
+            <input *ngIf="flag" type="submit" value="Submit">
+        </form>
+        </div>
+        <div [hidden]="!result">
+            <p>Rs.{{cheque.amount}} Cheque Issued Succesfully to {{cheque.toAccount.customerId.firstName}}!</p>
+            
+            
+            <button (click)="gotologin()">Go Back</button>
+
+        </div>
+    </div>
+    <div id="customer" [hidden]="chequeFlag">
+        
+        <table style="width: 100%; text-align: center;" border="1">
+            <tr>
+                <th>Cheque Id</th>
+                <th>Date</th>
+                <th>Sender Id</th>
+                <th>Amount</th>
+                
+                <th >Clearance Date</th>
+                <th>Cheque Status</th>
+               
+                <th *ngIf="typeChanges=='UNCLEARED'"  colspan="3">Action</th>
+            </tr>
+           
+           
+            <!-- <div *ngIf="che.chequeStatus=='UNCLEARED'"> -->
+            <tr *ngFor="let che of allCheque"  >
+                
+                <td *ngIf="che.chequeStatus==typeChanges" >{{che.chequeId}}</td>
+                <td *ngIf="che.chequeStatus==typeChanges">{{che.chequeDate.substring(0, 10)}}</td>
+                <td *ngIf="che.chequeStatus==typeChanges">{{che.fromAccount.accountId}}</td>
+                <td *ngIf="che.chequeStatus==typeChanges">{{che.amount}}</td>
+                <td *ngIf="che.chequeStatus==typeChanges">{{che.clearanceChequeDate.substring(0, 10)}}</td>
+                <td *ngIf="che.chequeStatus==typeChanges">{{che.chequeStatus}}</td>
+                <td *ngIf="che.chequeStatus==typeChanges && che.chequeStatus=='UNCLEARED'"><button (click)="activeUpdate(che)">Claim</button></td>
+                
+
+                
+                
+            </tr>
+            
+        <!-- </div> -->
+           
+        </table>
+    </div>
+    <!-- <div>
+
+        <button (click)="gotologin()">Back To Home</button>
+    </div> -->
+</main>
+<app-customer-footer></app-customer-footer>

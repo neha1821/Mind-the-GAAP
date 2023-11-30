@@ -1,0 +1,61 @@
+<main class="main">
+    <app-admin-header></app-admin-header>
+
+<div>
+    <h2>CHEQUE DETAILS</h2>
+    <table id="customer" border="1">
+        <tr>
+            <th>Cheque Id</th>
+            <td>{{cheque.chequeId}}</td>
+            </tr>
+            <tr>
+                <th>Issue Date</th>
+                <td>{{cheque.chequeDate.substring(0, 10)}}</td>
+            </tr>
+            <tr>
+                <th>Clearance Date </th>
+                <td>{{cheque.clearanceChequeDate.substring(0, 10)}}</td>
+            </tr>
+            <tr>
+                <th>Account Id</th>
+                <td>{{cheque.fromAccount.accountId}}</td>
+            </tr>
+            <tr>
+                <th>Account Holder Name</th>
+                <td>{{cheque.fromAccount.customerId.firstName}}</td>
+            </tr>
+            
+          
+            <tr>
+                <th>Amount </th>
+                <td>{{cheque.amount}}</td>
+            </tr>
+            <tr>
+                <th>Account Balance</th>
+                <td>{{this.cheque.fromAccount.currentBalance}}</td>
+            </tr>
+            <tr>
+                <th>Account Type </th>
+                <td>{{cheque.fromAccount.accountType}}</td>
+            </tr>
+            <tr>
+                <th>Account OverDraft Balance</th>
+                <td>{{this.cheque.fromAccount.overDraftBalance}}</td>
+            </tr>
+            <tr>
+                <th>Receiver Account Id</th>
+                <td>{{cheque.toAccount.accountId}}</td>
+            </tr>
+           
+            
+            <tr>
+                <th>Cheque Status</th>
+                <td>{{cheque.chequeStatus}}</td>
+            </tr>
+            <tr >
+                <td style="text-align: center;" colspan="2"><button (click)="goback()"  >Go Back</button></td>
+            </tr>
+    </table>
+</div>
+</main>
+<app-admin-footer></app-admin-footer>

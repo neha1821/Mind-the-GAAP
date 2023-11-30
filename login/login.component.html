@@ -1,21 +1,63 @@
-<form (ngSubmit)="validation()">
-    <div class="container">
+<main class="main">
+    <header class="main-header">
+
+        <a class="main-header__brand">ApeX Bank</a>
         
-      <label for="loginId"><b>Login Id</b></label>
-      <input type="text" placeholder="Enter Login Id" [(ngModel)]="login.loginId" name="LoginId" required>
+
+        <nav class="main-nav">
+            <ul class="main-nav__items">
+                <li class="main-nav__item main-nav__item__cta">
+                    <a (click)="loginCheck()">Login</a>
+                </li>
+                <li class="main-nav__item main-nav__item__cta">
+                    <a  href="newcustomer">Sign Up</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+        <form  >
+ 
+ 
   
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" [(ngModel)]="login.password" name="psw" required>
-  
-      <button type="submit">Login</button>
-      <a href="addCustomer">create an account </a><br>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+            <div class="container">
+              
+              <label for="loginId"><b>Login Id</b></label>
+              <input type="text" placeholder="Enter Login Id" name="loginId" [(ngModel)]="login.loginId" required>
+          
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" [(ngModel)]="verifyLogin.password" name="psw" required>
+          
+              <button  type="submit" (click)="userLogin() ">Login</button>
+              
+            <br>
+              <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+              </label>
+              <p class="wrongpassword" *ngIf="flag">Incorrect Password!.</p>
+              <p class="p" *ngIf="alreadyBlocked"> <b class="wrongpassword">To Many Attempts </b> - Contact Nerby APEX Bank Office</p>
+              <p class="p" *ngIf="flagBlock"> <b class="wrongpassword">To Many Attempts </b> - Contact Nerby APEX Bank Office</p>
+              <p class="p"  [hidden]="!alert"><b style="color: RED;">Your Account Already Blocked </b>- Contact Nerby APEX Bank Office</p>
+
+            </div>
+          
+            <!-- <div class="container" style="background-color:#f1f1f1">
+              <button type="button" class="cancelbtn">Cancel</button>
+              <span class="psw"> <a href="#">Forgot password?</a></span>
+            </div> -->
+          </form>
+        <br>
     </div>
-  
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn">Cancel</button>
-      <span class="psw"> <a href="#">Forgot password?</a></span>
-    </div>
-  </form>
+</main>
+<footer class="main-footer">
+    <nav>
+        <ul class="main-footer__links">
+            <li class="main-footer__link">
+                <a href="#">Support</a>
+            </li>
+            <li class="main-footer__link">
+                <a href="#">Terms of Use</a>
+            </li>
+        </ul>
+    </nav>
+</footer>

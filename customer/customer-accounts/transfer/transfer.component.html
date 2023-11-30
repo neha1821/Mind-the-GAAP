@@ -1,0 +1,44 @@
+<main class="main">
+    <app-customer-header></app-customer-header>
+
+
+    <div [hidden]="result">
+        <h2> Transaction Form</h2>
+        <form (ngSubmit)="addTransaction()">
+
+            <label for="fromAccount">From Account</label>
+            <input type="text" id="fromAccount" name="fromAccount" [(ngModel)]="accountId" readonly required><br>
+
+            <label  for="toAccount">Receiver Account id:</label>
+            <input class="toaccount" type="text" id="toAccount" name="toAccount" [(ngModel)]="transaction.toAccount.accountId" required>
+            <p style="text-align: center; color: red;" [hidden]="!alert">Sender Account does Not Exists - Try Again</p>
+
+            <button *ngIf="!flag" (click)="checkToaccount()">Check Account Present</button><br>
+            
+
+
+            <label *ngIf="flag" for="amount">Amount :</label>
+            <input *ngIf="flag" type="text" id="amount" name="amount" [(ngModel)]="transaction.amount" required>
+            <br>
+
+            <p style="text-align: center; color: red;"  [hidden]="!amountNotEnough">Insufficient Balance Check your Balance!.. </p>
+
+
+            <input *ngIf="flag" type="submit" value="Submit ">
+
+          
+        </form>
+    </div>
+
+   
+        
+    
+  
+    <div [hidden]="!transaferSuccess">
+        <p>Rs.{{transaction.amount}} Tranfer Succesfully to {{transaction.toAccount.customerId.firstName}}!</p>
+        <p>Check your Balance!..</p>
+        
+        <button (click)="goback()">Go Back</button>
+    </div>
+</main>
+<app-customer-footer></app-customer-footer>

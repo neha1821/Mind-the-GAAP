@@ -1,0 +1,35 @@
+
+<main class="main">
+    <app-admin-header></app-admin-header>
+    <div id="account" >
+        <h2>ACCOUNT REQUEST LIST</h2>
+
+    <table style="width: 100%;" border="1">
+        <tr>
+            <th>AccountId</th>
+            <th>UserName</th>
+            <th>CustomerId</th>
+            <th>Customer Status</th>
+            <th style="text-align: center;" colspan="2">Action</th>
+        </tr>
+        <tr *ngFor="let acc of allAccounts">
+            <td>{{acc.accountId}}</td>
+        <td>{{acc.customerId.username}}</td>
+        <td>{{acc.customerId.customerId}}</td>
+        <td>{{acc.customerId.customerStatus}}</td>
+        
+        <td><button (click)="accountDetails(acc.accountId)">Details</button></td>
+        <td><button (click)="changeAccountStatus(acc.accountId)" >Approve</button></td>
+        </tr>
+    
+        <!-- Customerdetails(acc.customerId.customerId) -->
+        <!-- changeAccountStatus(acc.accountId) -->
+        
+    </table>
+</div>
+
+
+    
+   
+</main>
+<app-admin-footer></app-admin-footer>

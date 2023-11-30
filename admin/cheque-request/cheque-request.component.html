@@ -1,0 +1,33 @@
+<main class="main">
+    <app-admin-header></app-admin-header>
+
+    <div id="customer">
+        <h2>CHEQUE REQUEST LIST</h2>
+        <table style="width: 100%;" border="1">
+            <tr>
+                <th>Cheque Id</th>
+                <th>Clearance Date</th>
+                <th>Amount</th>
+                <th>Sender Id</th>
+
+                <th>Receiver Id</th>
+                <th>Status</th>
+                <th style="text-align: center;" colspan="3">Action</th>
+            </tr>
+            <tr *ngFor="let cus of allCheque">
+                <td>{{cus.chequeId}}</td>
+                <td>{{cus.clearanceChequeDate.substring(0,10)}}</td>
+                <td>{{cus.amount}}</td>
+                <td>{{cus.fromAccount.accountId}}</td>
+                <td>{{cus.toAccount.accountId}}</td>
+                <td>{{cus.chequeStatus}}</td>
+                <!-- *ngIf="cus.fromAccount.currentBalance<=cus.amount || cus.fromAccount.overDraftBalance<=cus.amount" -->
+                <td><button (click)="Chequedetails(cus.chequeId)">Details</button></td>
+                <td colspan="2"  style="text-align: center; "><button style="background-color: rgb(246, 105, 105); color: white;" [hidden]="bounceHidden(cus)"  (click)="changeChequeStatusBounced(cus.chequeId)">Bounced</button>
+                <button style="background-color: rgb(120, 120, 239); color: white;" [hidden]="!bounceHidden(cus)" (click)="changeChequeStatusCleared(cus.chequeId)">Cleared</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</main>
+<app-admin-footer></app-admin-footer>
